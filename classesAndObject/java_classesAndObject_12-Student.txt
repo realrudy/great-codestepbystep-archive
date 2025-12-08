@@ -1,0 +1,201 @@
+https://www.codestepbystep.com/r/problem/view/java/classes/Student
+
+Student
+Language/Type:Javaclassesconstructorsfieldsimplementinginstance methods
+
+
+Define a class named Student. A Student object represents a university student that, for simplicity, just has a name, ID number, and number of units earned towards graduation. Each Student object should have the following public behavior:
+
+new Student(name, id)
+Constructor that initializes a new Student object storing the given name and ID number, with 0 units.
+s.getName()
+s.getID()
+s.getUnits()
+Returns the name, ID, or unit count of the student, respectively.
+s.incrementUnits(units);
+Adds the given number of units to this student's unit count.
+s.hasEnoughUnits()
+Returns whether the student has enough units (180) to graduate.
+s.toString()
+Returns the student's string representation, e.g. "Nick (#42342)".
+
+~~
+
+test #1:
+constructor
+result:
+pass
+test #2:
+getNameIDUnits
+assertion:
+getName result 1
+value:
+Nick
+assertion:
+getID result 1
+value:
+42342
+assertion:
+getUnits result 1
+value:
+0
+assertion:
+getName result 2
+value:
+Marty
+assertion:
+getID result 2
+value:
+1234
+assertion:
+getUnits result 2
+value:
+0
+result:
+pass
+test #3:
+incrementUnitsHasEnoughUnits
+assertion:
+getUnits w/ 0
+value:
+0
+assertion:
+hasEnoughUnits w/ 0
+value:
+false
+assertion:
+getUnits w/ 10
+value:
+10
+assertion:
+hasEnoughUnits w/ 10
+value:
+false
+assertion:
+getUnits w/ 179
+value:
+179
+assertion:
+hasEnoughUnits w/ 179
+value:
+false
+assertion:
+getUnits w/ 180
+value:
+180
+assertion:
+hasEnoughUnits w/ 180
+value:
+true
+assertion:
+getUnits w/ 181
+value:
+181
+assertion:
+hasEnoughUnits w/ 181
+value:
+true
+assertion:
+getUnits w/ 0
+value:
+0
+assertion:
+hasEnoughUnits w/ 0
+value:
+false
+assertion:
+getUnits w/ 5
+value:
+5
+assertion:
+hasEnoughUnits w/ 5
+value:
+false
+assertion:
+getUnits w/ 68
+value:
+68
+assertion:
+hasEnoughUnits w/ 68
+value:
+false
+assertion:
+getUnits w/ 168
+value:
+168
+assertion:
+hasEnoughUnits w/ 168
+value:
+false
+assertion:
+getUnits w/ 188
+value:
+188
+assertion:
+hasEnoughUnits w/ 188
+value:
+true
+result:
+pass
+test #4:
+toString
+assertion:
+toString result 1
+value:
+Nick (#42342)
+assertion:
+toString result 2
+value:
+Marty (#1234)
+result:
+pass
+
+~~
+
+
+
+
+
+public class Student {
+    // Private fields to store the state of the Student
+    private String name;
+    private int id;
+    private int units;
+
+    // Constructor: Initializes name and ID, sets units to 0
+    public Student(String name, int id) {
+        this.name = name;
+        this.id = id;
+        this.units = 0;
+    }
+
+    // Returns the student's name
+    public String getName() {
+        return this.name;
+    }
+
+    // Returns the student's ID number
+    public int getID() {
+        return this.id;
+    }
+
+    // Returns the number of units earned
+    public int getUnits() {
+        return this.units;
+    }
+
+    // Adds the given number of units to the total
+    public void incrementUnits(int units) {
+        this.units += units;
+    }
+
+    // Returns true if units are 180 or more
+    public boolean hasEnoughUnits() {
+        return this.units >= 180;
+    }
+
+    // Returns string representation like "Nick (#42342)"
+    public String toString() {
+        return this.name + " (#" + this.id + ")";
+    }
+}

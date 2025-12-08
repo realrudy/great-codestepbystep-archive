@@ -1,0 +1,680 @@
+https://www.codestepbystep.com/r/problem/view/java/classes/Clock-advance
+
+Clock-advance
+Language/Type:Javaclassesfieldsinstance methods
+
+Suppose that you are provided with a pre-written class Clock as described below. (The headings are shown, but not the method bodies, to save space.) Assume that the fields, constructor, and methods shown are already implemented. You may refer to them or use them in solving this problem if necessary.
+// A Clock object represents an hour:minute time during
+// the day or night, such as 10:45 AM or 6:27 PM.
+public class Clock {
+    private int hour;
+    private int minute;
+    private String amPm;
+
+    // Constructs a new time for the given hour/minute
+    public Clock(int hour, int minute, String amPm)
+    
+    // returns the field values
+    public int getHour()
+    public int getMinute()
+    public String getAmPm()
+
+    // returns String for time; for example, "6:27 PM"
+    public String toString()
+
+    // your method would go here
+
+}
+Write an instance method named advance that will be placed inside the Clock class to become a part of each Clock object's behavior. The advance method accepts a number of minutes as its parameter and moves your object forward in time by that amount of minutes. The minutes passed could be any non-negative number, even a large number such as 500 or 1000000. If necessary, your object might wrap into the next hour or day, or it might wrap from the morning ("AM") to the evening ("PM") or vice versa. A Clock object doesn't care about what day it is; if you advance by 1 minute from 11:59 PM, it becomes 12:00 AM.
+For example, if the following object is declared in client code:
+Clock time = new Clock(6, 27, "PM");
+The following calls to your method would modify the object's state as indicated in the comments:
+time.advance(1);       //  6:28 PM
+time.advance(30);      //  6:58 PM
+time.advance(5);       //  7:03 PM
+time.advance(60);      //  8:03 PM
+time.advance(128);     // 10:11 PM
+time.advance(180);     //  1:11 AM
+time.advance(1440);    //  1:11 AM  (1 day later)
+time.advance(21075);   //  4:26 PM  (2 weeks later)
+Assume that the state of the object is valid at the start of the call and that the amPm field stores either "AM" or "PM".
+
+~~
+
+TEST #1
+assertion:
+hour after advancing 4 minutes from 12:00 AM
+value:
+12
+
+TEST #2
+assertion:
+minute after advancing 4 minutes from 12:00 AM
+value:
+5
+
+TEST #3
+assertion:
+amPm after advancing 4 minutes from 12:00 AM
+value:
+AM
+
+TEST #4
+assertion:
+hour after advancing 11 minutes from 12:00 AM
+value:
+12
+
+TEST #5
+assertion:
+minute after advancing 11 minutes from 12:00 AM
+value:
+12
+
+TEST #6
+assertion:
+amPm after advancing 11 minutes from 12:00 AM
+value:
+AM
+
+TEST #7
+assertion:
+hour after advancing 39 minutes from 12:00 AM
+value:
+12
+
+TEST #8
+assertion:
+minute after advancing 39 minutes from 12:00 AM
+value:
+40
+
+TEST #9
+assertion:
+amPm after advancing 39 minutes from 12:00 AM
+value:
+AM
+
+TEST #10
+assertion:
+hour after advancing 42 minutes from 12:00 AM
+value:
+12
+
+TEST #11
+assertion:
+minute after advancing 42 minutes from 12:00 AM
+value:
+43
+
+TEST #12
+assertion:
+amPm after advancing 42 minutes from 12:00 AM
+value:
+AM
+
+TEST #13
+assertion:
+hour after advancing 43 minutes from 12:00 AM
+value:
+12
+
+TEST #14
+assertion:
+minute after advancing 43 minutes from 12:00 AM
+value:
+44
+
+TEST #15
+assertion:
+amPm after advancing 43 minutes from 12:00 AM
+value:
+AM
+
+TEST #16
+assertion:
+hour after advancing 44 minutes from 12:00 AM
+value:
+12
+
+TEST #17
+assertion:
+minute after advancing 44 minutes from 12:00 AM
+value:
+45
+
+TEST #18
+assertion:
+amPm after advancing 44 minutes from 12:00 AM
+value:
+AM
+
+TEST #19
+assertion:
+hour after advancing 64 minutes from 12:00 AM
+value:
+1
+
+TEST #20
+assertion:
+minute after advancing 64 minutes from 12:00 AM
+value:
+5
+
+TEST #21
+assertion:
+amPm after advancing 64 minutes from 12:00 AM
+value:
+AM
+
+TEST #22
+assertion:
+hour after advancing 75 minutes from 12:00 AM
+value:
+1
+
+TEST #23
+assertion:
+minute after advancing 75 minutes from 12:00 AM
+value:
+16
+
+TEST #24
+assertion:
+amPm after advancing 75 minutes from 12:00 AM
+value:
+AM
+
+TEST #25
+assertion:
+hour after advancing 78 minutes from 12:00 AM
+value:
+1
+
+TEST #26
+assertion:
+minute after advancing 78 minutes from 12:00 AM
+value:
+19
+
+TEST #27
+assertion:
+amPm after advancing 78 minutes from 12:00 AM
+value:
+AM
+
+TEST #28
+assertion:
+hour after advancing 92 minutes from 12:00 AM
+value:
+1
+
+TEST #29
+assertion:
+minute after advancing 92 minutes from 12:00 AM
+value:
+33
+
+TEST #30
+assertion:
+amPm after advancing 92 minutes from 12:00 AM
+value:
+AM
+
+TEST #31
+assertion:
+hour after advancing 108 minutes from 12:00 AM
+value:
+1
+
+TEST #32
+assertion:
+minute after advancing 108 minutes from 12:00 AM
+value:
+49
+
+TEST #33
+assertion:
+amPm after advancing 108 minutes from 12:00 AM
+value:
+AM
+
+TEST #34
+assertion:
+hour after advancing 118 minutes from 12:00 AM
+value:
+1
+
+TEST #35
+assertion:
+minute after advancing 118 minutes from 12:00 AM
+value:
+59
+
+TEST #36
+assertion:
+amPm after advancing 118 minutes from 12:00 AM
+value:
+AM
+
+TEST #37
+assertion:
+hour after advancing 149 minutes from 12:00 AM
+value:
+2
+
+TEST #38
+assertion:
+minute after advancing 149 minutes from 12:00 AM
+value:
+30
+
+TEST #39
+assertion:
+amPm after advancing 149 minutes from 12:00 AM
+value:
+AM
+
+TEST #40
+assertion:
+hour after advancing 156 minutes from 12:00 AM
+value:
+2
+
+TEST #41
+assertion:
+minute after advancing 156 minutes from 12:00 AM
+value:
+37
+
+TEST #42
+assertion:
+amPm after advancing 156 minutes from 12:00 AM
+value:
+AM
+
+TEST #43
+assertion:
+hour after advancing 166 minutes from 12:00 AM
+value:
+2
+
+TEST #44
+assertion:
+minute after advancing 166 minutes from 12:00 AM
+value:
+47
+
+TEST #45
+assertion:
+amPm after advancing 166 minutes from 12:00 AM
+value:
+AM
+
+TEST #46
+assertion:
+hour after advancing 179 minutes from 12:00 AM
+value:
+3
+
+TEST #47
+assertion:
+minute after advancing 179 minutes from 12:00 AM
+value:
+0
+
+TEST #48
+assertion:
+amPm after advancing 179 minutes from 12:00 AM
+value:
+AM
+
+TEST #49
+assertion:
+hour after advancing 203 minutes from 12:00 AM
+value:
+3
+
+TEST #50
+assertion:
+minute after advancing 203 minutes from 12:00 AM
+value:
+24
+
+TEST #51
+assertion:
+amPm after advancing 203 minutes from 12:00 AM
+value:
+AM
+
+TEST #52
+assertion:
+hour after advancing 219 minutes from 12:00 AM
+value:
+3
+
+TEST #53
+assertion:
+minute after advancing 219 minutes from 12:00 AM
+value:
+40
+
+TEST #54
+assertion:
+amPm after advancing 219 minutes from 12:00 AM
+value:
+AM
+
+TEST #55
+assertion:
+hour after advancing 228 minutes from 12:00 AM
+value:
+3
+
+TEST #56
+assertion:
+minute after advancing 228 minutes from 12:00 AM
+value:
+49
+
+TEST #57
+assertion:
+amPm after advancing 228 minutes from 12:00 AM
+value:
+AM
+
+TEST #58
+assertion:
+hour after advancing 235 minutes from 12:00 AM
+value:
+3
+
+TEST #59
+assertion:
+minute after advancing 235 minutes from 12:00 AM
+value:
+56
+
+TEST #60
+assertion:
+amPm after advancing 235 minutes from 12:00 AM
+value:
+AM
+
+TEST #61
+assertion:
+hour after advancing 285 minutes from 12:00 AM
+value:
+4
+
+TEST #62
+assertion:
+minute after advancing 285 minutes from 12:00 AM
+value:
+46
+
+TEST #63
+assertion:
+amPm after advancing 285 minutes from 12:00 AM
+value:
+AM
+
+TEST #64
+assertion:
+hour after advancing 299 minutes from 12:00 AM
+value:
+5
+
+TEST #65
+assertion:
+minute after advancing 299 minutes from 12:00 AM
+value:
+0
+
+TEST #66
+assertion:
+amPm after advancing 299 minutes from 12:00 AM
+value:
+AM
+
+TEST #67
+assertion:
+hour after advancing 309 minutes from 12:00 AM
+value:
+5
+
+TEST #68
+assertion:
+minute after advancing 309 minutes from 12:00 AM
+value:
+10
+
+TEST #69
+assertion:
+amPm after advancing 309 minutes from 12:00 AM
+value:
+AM
+
+TEST #70
+assertion:
+hour after advancing 345 minutes from 12:00 AM
+value:
+5
+
+TEST #71
+assertion:
+minute after advancing 345 minutes from 12:00 AM
+value:
+46
+
+TEST #72
+assertion:
+amPm after advancing 345 minutes from 12:00 AM
+value:
+AM
+
+TEST #73
+assertion:
+hour after advancing 346 minutes from 12:00 AM
+value:
+5
+
+TEST #74
+assertion:
+minute after advancing 346 minutes from 12:00 AM
+value:
+47
+
+TEST #75
+assertion:
+amPm after advancing 346 minutes from 12:00 AM
+value:
+AM
+
+TEST #76
+assertion:
+hour after advancing 352 minutes from 12:00 AM
+value:
+5
+
+TEST #77
+assertion:
+minute after advancing 352 minutes from 12:00 AM
+value:
+53
+
+TEST #78
+assertion:
+amPm after advancing 352 minutes from 12:00 AM
+value:
+AM
+
+TEST #79
+assertion:
+hour after advancing 373 minutes from 12:00 AM
+value:
+6
+
+TEST #80
+assertion:
+minute after advancing 373 minutes from 12:00 AM
+value:
+14
+
+TEST #81
+assertion:
+amPm after advancing 373 minutes from 12:00 AM
+value:
+AM
+
+TEST #82
+assertion:
+hour after advancing 379 minutes from 12:00 AM
+value:
+6
+
+TEST #83
+assertion:
+minute after advancing 379 minutes from 12:00 AM
+value:
+20
+
+TEST #84
+assertion:
+amPm after advancing 379 minutes from 12:00 AM
+value:
+AM
+
+TEST #85
+assertion:
+hour after advancing 397 minutes from 12:00 AM
+value:
+6
+
+TEST #86
+assertion:
+minute after advancing 397 minutes from 12:00 AM
+value:
+38
+
+TEST #87
+assertion:
+amPm after advancing 397 minutes from 12:00 AM
+value:
+AM
+
+TEST #88
+assertion:
+hour after advancing 403 minutes from 12:00 AM
+value:
+6
+
+TEST #89
+assertion:
+minute after advancing 403 minutes from 12:00 AM
+value:
+44
+
+TEST #90
+assertion:
+amPm after advancing 403 minutes from 12:00 AM
+value:
+AM
+
+TEST #91
+assertion:
+hour after advancing 417 minutes from 12:00 AM
+value:
+6
+
+TEST #92
+assertion:
+minute after advancing 417 minutes from 12:00 AM
+value:
+58
+
+TEST #93
+assertion:
+amPm after advancing 417 minutes from 12:00 AM
+value:
+AM
+
+TEST #94
+assertion:
+hour after advancing 418 minutes from 12:00 AM
+value:
+6
+
+TEST #95
+assertion:
+minute after advancing 418 minutes from 12:00 AM
+value:
+59
+
+TEST #96
+assertion:
+amPm after advancing 418 minutes from 12:00 AM
+value:
+AM
+
+TEST #97
+assertion:
+hour after advancing 427 minutes from 12:00 AM
+value:
+7
+
+TEST #98
+assertion:
+minute after advancing 427 minutes from 12:00 AM
+value:
+8
+
+TEST #99
+assertion:
+amPm after advancing 427 minutes from 12:00 AM
+value:
+AM
+
+TEST #100
+assertion:
+hour after advancing 431 minutes from 12:00 AM
+value:
+7
+
+~~
+
+public void advance(int minutes) {
+    int total = 0;
+
+    int hour24 = hour;
+    if (amPm.equals("PM") && hour24 != 12) {
+        hour24 += 12;
+    }
+    if (amPm.equals("AM") && hour24 == 12) {
+        hour24 = 0;
+    }
+
+    total = hour24 * 60 + minute;
+
+    total += minutes;
+
+    total %= (24 * 60);
+
+    hour24 = total / 60;
+    minute = total % 60;
+
+    if (hour24 == 0) {
+        hour = 12;
+        amPm = "AM";
+    } else if (hour24 < 12) {
+        hour = hour24;
+        amPm = "AM";
+    } else if (hour24 == 12) {
+        hour = 12;
+        amPm = "PM";
+    } else { 
+        hour = hour24 - 12;
+        amPm = "PM";
+    }
+}
+

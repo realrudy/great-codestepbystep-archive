@@ -1,0 +1,363 @@
+https://www.codestepbystep.com/r/problem/view/java/classes/Date-absoluteDay
+
+Date-absoluteDay
+Language/Type:Java
+
+Write a method named absoluteDay that will be placed in the Date class. The method should return the "absolute day of the year" between 1 and 365 represented by the Date object. January 1 is absolute day #1, January 2 is day #2, ..., and December 31st is absolute day #365. For example, calling this method on a date representing February 13th should return 44, and calling it on a Date representing September 19th should return 263. The table below summarizes the absolute days for various dates throughout the year.
+
+Date (month/day)	1/1	1/2	1/3	...	1/30	1/31	2/1	2/2	...	2/28	3/1	3/2	...	12/30	12/31
+Absolute day	1	2	3	...	30	31	32	33	...	59	60	61	...	364	365
+The following table shows the results of calling your method on several Date objects.
+
+Object	Call	Returns
+Date jan1 = new Date(1, 1);	jan1.absoluteDay()	1
+Date jan4 = new Date(1, 4);	jan4.absoluteDay()	4
+Date feb1 = new Date(2, 1);	feb1.absoluteDay()	32
+Date mar10 = new Date(3, 10);	mar10.absoluteDay()	69
+Date sep19 = new Date(9, 19);	sep19.absoluteDay()	262
+Date dec31 = new Date(12, 31);	dec31.absoluteDay()	365
+You should not solve this problem by writing 12 if statements, one for each month; this is redundant and poor style.
+
+Recall that your method is allowed to call other methods on Date objects or construct other objects if you like.
+
+
+
+~~
+
+TEST #1
+assertion:
+01/01 absoluteDay
+value:
+1
+
+TEST #2
+assertion:
+01/04 absoluteDay
+value:
+4
+
+TEST #3
+assertion:
+02/01 absoluteDay
+value:
+32
+
+TEST #4
+assertion:
+03/10 absoluteDay
+value:
+69
+
+TEST #5
+assertion:
+09/19 absoluteDay
+value:
+262
+
+TEST #6
+assertion:
+12/31 absoluteDay
+value:
+365
+
+TEST #7
+assertion:
+01/01 absoluteDay
+value:
+1
+
+TEST #8
+assertion:
+01/02 absoluteDay
+value:
+2
+
+TEST #9
+assertion:
+01/03 absoluteDay
+value:
+3
+
+TEST #10
+assertion:
+01/05 absoluteDay
+value:
+5
+
+TEST #11
+assertion:
+01/06 absoluteDay
+value:
+6
+
+TEST #12
+assertion:
+01/07 absoluteDay
+value:
+7
+
+TEST #13
+assertion:
+01/08 absoluteDay
+value:
+8
+
+TEST #14
+assertion:
+01/09 absoluteDay
+value:
+9
+
+TEST #15
+assertion:
+01/10 absoluteDay
+value:
+10
+
+TEST #16
+assertion:
+01/11 absoluteDay
+value:
+11
+
+TEST #17
+assertion:
+01/12 absoluteDay
+value:
+12
+
+TEST #18
+assertion:
+01/13 absoluteDay
+value:
+13
+
+TEST #19
+assertion:
+01/14 absoluteDay
+value:
+14
+
+TEST #20
+assertion:
+01/15 absoluteDay
+value:
+15
+
+TEST #21
+assertion:
+01/16 absoluteDay
+value:
+16
+
+TEST #22
+assertion:
+01/17 absoluteDay
+value:
+17
+
+TEST #23
+assertion:
+01/18 absoluteDay
+value:
+18
+
+TEST #24
+assertion:
+01/19 absoluteDay
+value:
+19
+
+TEST #25
+assertion:
+01/20 absoluteDay
+value:
+20
+
+TEST #26
+assertion:
+01/21 absoluteDay
+value:
+21
+
+TEST #27
+assertion:
+01/22 absoluteDay
+value:
+22
+
+TEST #28
+assertion:
+01/23 absoluteDay
+value:
+23
+
+TEST #29
+assertion:
+01/24 absoluteDay
+value:
+24
+
+TEST #30
+assertion:
+01/25 absoluteDay
+value:
+25
+
+TEST #31
+assertion:
+01/26 absoluteDay
+value:
+26
+
+TEST #32
+assertion:
+01/27 absoluteDay
+value:
+27
+
+TEST #33
+assertion:
+01/28 absoluteDay
+value:
+28
+
+TEST #34
+assertion:
+01/29 absoluteDay
+value:
+29
+
+TEST #35
+assertion:
+01/30 absoluteDay
+value:
+30
+
+TEST #36
+assertion:
+01/31 absoluteDay
+value:
+31
+
+TEST #37
+assertion:
+02/02 absoluteDay
+value:
+33
+
+TEST #38
+assertion:
+02/03 absoluteDay
+value:
+34
+
+TEST #39
+assertion:
+02/04 absoluteDay
+value:
+35
+
+TEST #40
+assertion:
+02/05 absoluteDay
+value:
+36
+
+TEST #41
+assertion:
+02/06 absoluteDay
+value:
+37
+
+TEST #42
+assertion:
+02/07 absoluteDay
+value:
+38
+
+TEST #43
+assertion:
+02/08 absoluteDay
+value:
+39
+
+TEST #44
+assertion:
+02/09 absoluteDay
+value:
+40
+
+TEST #45
+assertion:
+02/10 absoluteDay
+value:
+41
+
+TEST #46
+assertion:
+02/11 absoluteDay
+value:
+42
+
+TEST #47
+assertion:
+02/12 absoluteDay
+value:
+43
+
+TEST #48
+assertion:
+02/13 absoluteDay
+value:
+44
+
+TEST #49
+assertion:
+02/14 absoluteDay
+value:
+45
+
+TEST #50
+assertion:
+02/15 absoluteDay
+value:
+46
+
+TEST #51
+assertion:
+02/16 absoluteDay
+value:
+47
+
+TEST #52
+assertion:
+02/17 absoluteDay
+value:
+48
+
+TEST #53
+assertion:
+02/18 absoluteDay
+value:
+49
+
+TEST #54
+assertion:
+02/19 absoluteDay
+value:
+50
+
+
+~~
+
+
+public int absoluteDay() {
+    // Number of days before each month (index 0 = Jan, 1 = Feb, ..., 11 = Dec)
+    int[] daysBeforeMonth = {0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334};
+    
+    // month is 1-based, so subtract 1 to get correct index
+    return daysBeforeMonth[month - 1] + day;
+}
+
+

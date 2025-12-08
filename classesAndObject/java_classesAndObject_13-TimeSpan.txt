@@ -1,0 +1,251 @@
+https://www.codestepbystep.com/r/problem/view/java/classes/TimeSpan
+
+TimeSpan
+Language/Type:Javaclassesconstructorsfieldsimplementinginstance methods
+
+Define a class named TimeSpan. A TimeSpan object stores a span of time in hours and minutes (for example, the time span between 8:00am and 10:30am is 2 hours, 30 minutes). Each TimeSpan object should have the following public methods:
+
+new TimeSpan(hours, minutes)
+Constructs a TimeSpan object storing the given time span of hours and minutes.
+getHours()
+Returns the number of hours in this time span.
+getMinutes()
+Returns the number of minutes in this time span, between 0 and 59.
+add(hours, minutes)
+Adds the given amount of time to the span. For example, (2 hours, 15 min) + (1 hour, 45 min) = (4 hours). Assume that the parameters are valid: the hours are non-negative, and the minutes are between 0 and 59.
+add(timespan)
+Adds the given amount of time (stored as a time span) to the current time span.
+getTotalHours()
+Returns the total time in this time span as the real number of hours, such as 9.75 for (9 hours, 45 min).
+toString()
+Returns a string representation of the time span of hours and minutes, such as "28h46m".
+The minutes should always be reported as being in the range of 0 to 59. That means that you may have to "carry" 60 minutes into a full hour.
+
+~~
+test #1:
+constructor
+result:
+pass
+test #2:
+getMinutesGetHours
+assertion:
+3h45m getHours
+value:
+3
+assertion:
+3h45m getMinutes
+value:
+45
+assertion:
+0h51m getHours
+value:
+0
+assertion:
+0h51m getMinutes
+value:
+51
+result:
+pass
+test #3:
+getTotalHours
+assertion:
+3h45m getTotalHours
+value:
+3.75
+assertion:
+0h57m getTotalHours 1
+value:
+0.95
+assertion:
+0h57m getTotalHours 2
+value:
+0.95
+assertion:
+12h30m getTotalHours
+value:
+12.5
+result:
+pass
+test #4:
+add1
+assertion:
+6h15m getHours
+value:
+6
+assertion:
+6h5m getMinutes
+value:
+15
+assertion:
+6h15m getTotalHours
+value:
+6.25
+assertion:
+7h6m getHours
+value:
+7
+assertion:
+7h6m getMinutes
+value:
+6
+assertion:
+7h6m getTotalHours
+value:
+7.1
+assertion:
+7h6m getHours
+value:
+7
+assertion:
+7h6m getMinutes
+value:
+6
+assertion:
+7h6m getTotalHours
+value:
+7.1
+assertion:
+8h0m getHours
+value:
+8
+assertion:
+8h0m getMinutes
+value:
+0
+assertion:
+8h0m getTotalHours
+value:
+8.0
+result:
+pass
+test #5:
+add2
+assertion:
+6h15m getHours
+value:
+6
+assertion:
+6h15m getMinutes
+value:
+15
+assertion:
+6h15m getTotalHours
+value:
+6.25
+assertion:
+7h6m getHours
+value:
+7
+assertion:
+7h6m getMinutes
+value:
+6
+assertion:
+7h6m getTotalHours
+value:
+7.1
+assertion:
+7h6m getTotalHours
+value:
+7.1
+assertion:
+8h0m getHours
+value:
+8
+assertion:
+8h0m getMinutes
+value:
+0
+assertion:
+8h0m getTotalHours
+value:
+8.0
+result:
+pass
+test #6:
+toString
+assertion:
+values must be equal
+value:
+3h45m
+assertion:
+values must be equal
+value:
+7h6m
+assertion:
+values must be equal
+value:
+6h59m
+assertion:
+values must be equal
+value:
+0h0m
+assertion:
+values must be equal
+value:
+6h15m
+result:
+pass
+~~
+
+
+
+
+public class TimeSpan {
+    private int hours;
+    private int minutes;
+
+ 
+    public TimeSpan(int hours, int minutes) {
+        this.hours = 0; // Initialize fields
+        this.minutes = 0;
+        // Add the initial time, which handles the normalization
+        add(hours, minutes); 
+    }
+
+   
+    public int getHours() {
+        return hours;
+    }
+
+   
+    public int getMinutes() {
+        return minutes;
+    }
+
+    
+    public void add(int hours, int minutes) {
+        if (hours < 0 || minutes < 0) {
+             throw new IllegalArgumentException("Hours and minutes must be non-negative.");
+        }
+        
+        // Add the minutes first
+        this.minutes += minutes;
+
+        // Carry over excess minutes to hours (normalization)
+        int minutesToHours = this.minutes / 60;
+        this.hours += minutesToHours;
+        this.minutes %= 60; // Set minutes to the remainder (0-59)
+
+        // Add the given hours
+        this.hours += hours;
+    }
+
+ 
+    public void add(TimeSpan other) {
+        // We can simply call the other add method, as the other TimeSpan is already normalized.
+        add(other.getHours(), other.getMinutes());
+    }
+
+  
+    public double getTotalHours() {
+        // Divide minutes by 60.0 to ensure floating-point division
+        return this.hours + (this.minutes / 60.0);
+    }
+
+   
+    @Override
+    public String toString() {
+        return this.hours + "h" + this.minutes + "m";
+    }
+}

@@ -1,0 +1,129 @@
+https://www.codestepbystep.com/r/problem/view/java/classes/Date
+
+Date
+Language/Type:Javaclasses
+
+Write a class of objects named Date that remembers information about a month and day. Ignore leap years and don't store the year in your object. You must include the following public methods:
+
+member name	description
+Date(m, d)	constructs a new date representing the given month and day
+daysInMonth()	returns the number of days in the month stored by your date object
+getDay()	returns the day
+getMonth()	returns the month
+nextDay()	advances the Date to the next day, wrapping to the next month and/or year if necessary
+toString()	returns a string representation such as "07/04"
+You should define the entire class including the class heading, the private fields, and the declarations and definitions of all the public methods and constructor.
+
+~~
+
+TEST #1
+assertion: getDay result
+value: 25
+assertion: getMonth result
+value: 12
+
+TEST #2
+assertion: toString result
+value: 12/25
+
+TEST #3
+assertion: toString result
+value: 09/04
+
+TEST #4
+assertion: daysInMonth 1
+value: 31
+assertion: daysInMonth 2
+value: 28
+assertion: daysInMonth 3
+value: 31
+assertion: daysInMonth 4
+value: 30
+assertion: daysInMonth 5
+value: 31
+assertion: daysInMonth 6
+value: 30
+assertion: daysInMonth 7
+value: 31
+assertion: daysInMonth 8
+value: 31
+assertion: daysInMonth 9
+value: 30
+assertion: daysInMonth 10
+value: 31
+assertion: daysInMonth 11
+value: 30
+assertion: daysInMonth 12
+value: 31
+
+TEST #5
+assertion: 10/14 state after nextDay
+value: 10/15
+
+TEST #6
+assertion: 10/31 state after nextDay
+value: 11/01
+
+TEST #7
+assertion: 6/30 state after nextDay
+value: 07/01
+
+TEST #8
+assertion: 12/31 state after nextDay
+value: 01/01
+
+~~
+
+
+
+
+
+public class Date {
+    private int month;
+    private int day;
+
+    public Date(int m, int d) {
+        month = m;
+        day = d;
+    }
+
+    public int daysInMonth() {
+        switch (month) {
+            case 1: case 3: case 5: case 7:
+            case 8: case 10: case 12:
+                return 31;
+            case 4: case 6: case 9: case 11:
+                return 30;
+            case 2:
+                return 28; 
+            default:
+                return 0; 
+        }
+    }
+
+    public int getDay() {
+        return day;
+    }
+
+    public int getMonth() {
+        return month;
+    }
+
+    public void nextDay() {
+        day++;
+        if (day > daysInMonth()) {
+            day = 1;
+            month++;
+            if (month > 12) {
+                month = 1; // wrap to January
+            }
+        }
+    }
+
+    public String toString() {
+        String mm = (month < 10 ? "0" : "") + month;
+        String dd = (day < 10 ? "0" : "") + day;
+        return mm + "/" + dd;
+    }
+}
+

@@ -1,0 +1,129 @@
+https://www.codestepbystep.com/r/problem/view/java/classes/PointErrors
+
+PointErrors
+Language/Type:Javaclassesconstructorsfieldsimplementinginstance methods
+Related Links:Math
+
+The following Point class has several errors; some are syntax errors and some are incorrect behavior. Find and fix them all.
+
+
+
+~~
+test #1:
+test 1
+assertion:
+(4, 3) getX
+value:
+4
+assertion:
+(4, 3) getY
+value:
+3
+assertion:
+(4, 3) distanceFromOrigin
+value:
+5.0
+assertion:
+(4, 3) toString
+value:
+(4, 3)
+assertion:
+(4, 3) translate(2, -3) then getX
+value:
+6
+assertion:
+(4, 3) translate(2, -3) then getY
+value:
+0
+assertion:
+(6, 0) distanceFromOrigin
+value:
+6.0
+result:
+pass
+test #2:
+test 2
+assertion:
+(4, 3) toString
+value:
+(4, 3)
+assertion:
+(4, 3) translate(2, -3) then getX
+value:
+6
+assertion:
+(4, 3) translate(2, -3) then getY
+value:
+0
+assertion:
+(6, 0) translate(2, -3) then distanceFromOrigin
+value:
+6.0
+assertion:
+(4, 3) translate(2, -3) then toString
+value:
+(6, 0)
+result:
+pass
+~~
+
+/**
+ * Represents a point in 2D space with integer coordinates.
+ * Includes methods for translation, distance calculations, and accessors (getters).
+ */
+public class Point {
+    // 1. Fields (Instance Variables) - Declared as private for encapsulation
+    private int x;
+    private int y;
+
+    // 2. Constructor
+    /**
+     * Constructs a new Point with the specified coordinates.
+     */
+    public Point(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    // 3. Instance Method: translate
+    /**
+     * Translates (shifts) this point by the given amount.
+     */
+    public void translate(int dx, int dy) {
+        this.x += dx;
+        this.y += dy;
+    }
+
+    // 4. Accessor (Getter) Method: getX (FIXES "cannot find symbol: method getX()")
+    /**
+     * Returns the x-coordinate of this Point.
+     */
+    public int getX() {
+        return this.x;
+    }
+
+    // 5. Accessor (Getter) Method: getY
+    /**
+     * Returns the y-coordinate of this Point.
+     */
+    public int getY() {
+        return this.y;
+    }
+    
+    // 6. Instance Method: distanceFromOrigin (Fixes previous error)
+
+    public double distanceFromOrigin() {
+        // Uses the distance formula: sqrt(x^2 + y^2)
+        return Math.sqrt(this.x * this.x + this.y * this.y);
+    }
+    
+    // 7. toString Method (For easy printing and debugging)
+    /**
+     * Returns a string representation of this point, e.g., "(17, 9)".
+     */
+    @Override
+    public String toString() {
+        return "(" + this.x + ", " + this.y + ")";
+    }
+}
+

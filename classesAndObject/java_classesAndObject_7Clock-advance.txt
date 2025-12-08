@@ -1,0 +1,259 @@
+https://www.codestepbystep.com/r/problem/view/java/classes/Clock-isWorkTime
+
+Clock-isWorkTime
+Language/Type:Javaclassesinstance methods
+
+
+Suppose that you are provided with a pre-written class Clock as described below. (The headings are shown, but not the method bodies, to save space.) Assume that the fields, constructor, and methods shown are already implemented. You may refer to them or use them in solving this problem if necessary.
+
+// A Clock object represents an hour:minute time during
+// the day or night, such as 10:45 AM or 6:27 PM.
+public class Clock {
+    private int hour;
+    private int minute;
+    private String amPm;
+
+    // Constructs a new time for the given hour/minute
+    public Clock(int hour, int minute, String amPm)
+    
+    // returns the field values
+    public int getHour()
+    public int getMinute()
+    public String getAmPm()
+
+    // returns String for time; for example, "6:27 PM"
+    public String toString()
+
+    // advances this Clock by the given # of minutes
+    public void advance(int m)
+
+    // your method would go here
+
+}
+Write an instance method named isWorkTime that will be placed inside the Clock class to become a part of each Clock object's behavior. The isWorkTime method returns true if the Clock object represents a time during the normal "work day" from 9:00 AM to 5:00 PM, inclusive. Any times outside that range would cause the method to return a result of false.
+
+For example, if the following object is declared in client code:
+
+Clock t1 = new Clock(3, 27, "PM");
+The following call to your method would return true:
+
+if (t1.isWorkTime()) {       // true
+Here are some other objects. Their results when used with your method are shown at right in comments:
+
+Clock t2 = new Clock(12, 45, "AM"); //false
+Clock t3 = new Clock( 6, 02, "AM"); //false
+Clock t4 = new Clock( 8, 59, "AM"); //false
+Clock t5 = new Clock( 9, 00, "AM"); //true
+Clock t6 = new Clock(11, 38, "AM"); //true
+Clock t7 = new Clock(12, 53, "PM"); //true
+Clock t8 = new Clock( 3, 15, "PM"); //true
+Clock t9 = new Clock( 4, 59, "PM"); //true
+Clock ta = new Clock( 5, 00, "PM"); //true
+Clock tb = new Clock( 5, 01, "PM"); //false
+Clock tc = new Clock( 8, 30, "PM"); //false
+Clock td = new Clock(11, 59, "PM"); //false
+Your method should not modify the state of the object. Assume that the state of the object is valid at the start of the call and that the amPm field stores either "AM" or "PM".
+
+~~
+
+TEST #1
+assertion:
+12:00 AM isWorkTime result
+value:
+false
+
+TEST #2
+assertion:
+12:55 AM isWorkTime result
+value:
+false
+
+TEST #3
+assertion:
+4:30 AM isWorkTime result
+value:
+false
+
+TEST #4
+assertion:
+5:15 AM isWorkTime result
+value:
+false
+
+TEST #5
+assertion:
+5:59 AM isWorkTime result
+value:
+false
+
+TEST #6
+assertion:
+6:00 AM isWorkTime result
+value:
+false
+
+TEST #7
+assertion:
+6:02 AM isWorkTime result
+value:
+false
+
+TEST #8
+assertion:
+8:30 AM isWorkTime result
+value:
+false
+
+TEST #9
+assertion:
+8:59 AM isWorkTime result
+value:
+false
+
+TEST #10
+assertion:
+9:00 AM isWorkTime result
+value:
+true
+
+TEST #11
+assertion:
+9:05 AM isWorkTime result
+value:
+true
+
+TEST #12
+assertion:
+9:59 AM isWorkTime result
+value:
+true
+
+TEST #13
+assertion:
+10:23 AM isWorkTime result
+value:
+true
+
+TEST #14
+assertion:
+11:41 AM isWorkTime result
+value:
+true
+
+TEST #15
+assertion:
+12:00 PM isWorkTime result
+value:
+true
+
+TEST #16
+assertion:
+12:38 PM isWorkTime result
+value:
+true
+
+TEST #17
+assertion:
+1:52 PM isWorkTime result
+value:
+true
+
+TEST #18
+assertion:
+3:19 PM isWorkTime result
+value:
+true
+
+TEST #19
+assertion:
+4:00 PM isWorkTime result
+value:
+true
+
+TEST #20
+assertion:
+4:30 PM isWorkTime result
+value:
+true
+
+TEST #21
+assertion:
+4:59 PM isWorkTime result
+value:
+true
+
+TEST #22
+assertion:
+5:00 PM isWorkTime result
+value:
+true
+
+TEST #23
+assertion:
+5:01 PM isWorkTime result
+value:
+false
+
+TEST #24
+assertion:
+5:30 PM isWorkTime result
+value:
+false
+
+TEST #25
+assertion:
+5:59 PM isWorkTime result
+value:
+false
+
+TEST #26
+assertion:
+6:00 PM isWorkTime result
+value:
+false
+
+TEST #27
+assertion:
+8:30 PM isWorkTime result
+value:
+false
+
+TEST #28
+assertion:
+9:00 PM isWorkTime result
+value:
+false
+
+TEST #29
+assertion:
+9:30 PM isWorkTime result
+value:
+false
+
+TEST #30
+assertion:
+11:59 PM isWorkTime result
+value:
+false
+
+
+~~
+
+public boolean isWorkTime() {
+    if (amPm.equals("AM")) {
+        // Work time starts at 9:00 AM
+        return hour >= 9; 
+    } else { // PM
+        // Work time ends at 5:00 PM
+        return hour < 5 || hour == 5 && minute == 0;
+    }
+}
+
+~~
+public boolean isWorkTime() {
+    if (amPm.equals("AM")) {
+        return hour >= 9 && hour <= 11;
+    } else { // PM
+        return hour == 12 || (hour >= 1 && hour < 5) || (hour == 5 && minute == 0);
+    }
+}
