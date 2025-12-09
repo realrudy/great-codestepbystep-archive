@@ -1,0 +1,88 @@
+https://www.codestepbystep.com/r/problem/view/java/basics/CalculateLine
+
+CalculateLine
+Language/Type:Javabasicsconsole outputexpressionsvariablesinteractive programs
+Related Links:Scanner
+Author:Nick Troccoli (added by Marty Stepp) on 2017/04/09
+
+Write an interactive console program in a class named CalculateLine that calculates y coordinates on a line. First, it prompts the user for a slope m, and an intercept b (as seen in the line equation of the form y = m x + b). Then the program prompts the user for x values until the user enters a -1. For each entered number, print the y value on that line for that entered x value. Here is a sample run of the program (user input is shown like this):
+
+This program calculates y coordinates for a line.
+Enter slope (m): 2
+Enter intercept (b): 4
+Enter x: 5
+f(5) = 14
+Enter x: 1
+f(1) = 6
+Enter x: -1
+~~
+
+test #1:
+CalculateLine.main(args);
+console output:
+This program calculates y coordinates for a line.
+Enter slope (m): 2
+Enter intercept (b): 4
+Enter x: 5
+f(5) = 14
+Enter x: 1
+f(1) = 6
+Enter x: -1
+result:
+pass
+test #2:
+CalculateLine.main(args);
+console output:
+This program calculates y coordinates for a line.
+Enter slope (m): -3
+Enter intercept (b): 8
+Enter x: 1
+f(1) = 5
+Enter x: 2
+f(2) = 2
+Enter x: 3
+f(3) = -1
+Enter x: 4
+f(4) = -4
+Enter x: 0
+f(0) = 8
+Enter x: -1
+result:
+pass
+
+test #3:
+CalculateLine.main(args);
+console output:
+This program calculates y coordinates for a line.
+Enter slope (m): 0
+Enter intercept (b): 0
+Enter x: -1
+result:
+pass
+~~
+import java.util.Scanner;
+
+public class CalculateLine {
+    public static void main(String[] args) {
+        Scanner console = new Scanner(System.in);
+
+        System.out.println("This program calculates y coordinates for a line.");
+
+        System.out.print("Enter slope (m): ");
+        double m = console.nextDouble();
+
+        System.out.print("Enter intercept (b): ");
+        double b = console.nextDouble();
+
+        System.out.print("Enter x: ");
+        int x = console.nextInt();
+
+        while (x != -1) {
+            double y = m * x + b;
+            System.out.println("f(" + x + ") = " + (int) y);  // cast removes .0
+
+            System.out.print("Enter x: ");
+            x = console.nextInt();
+        }
+    }
+}

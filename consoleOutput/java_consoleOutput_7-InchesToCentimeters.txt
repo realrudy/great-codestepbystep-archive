@@ -1,0 +1,70 @@
+https://www.codestepbystep.com/r/problem/view/java/basics/InchesToCentimeters
+
+
+InchesToCentimeters
+Language/Type:Javabasicsconsole outputexpressionsvariablesinteractive programs
+Related Links:Scanner
+
+Write an interactive console program in a class named InchesToCentimeters that prompts the user to read in two input values: a number of feet, followed on a separate line by a number of inches. The program should convert this amount to centimeters. Here is a sample run of the program (user input is shown like this):
+
+This program converts feet and inches to centimeters.
+Enter number of feet: 5
+Enter number of inches: 11
+5ft 11in = 180.34cm
+
+~~
+
+test #1:
+InchesToCentimeters.main(args);
+console output:
+This program converts feet and inches to centimeters.
+Enter number of feet: 5
+Enter number of inches: 11
+5ft 11in = 180.34cm
+result:
+pass
+
+test #2:
+InchesToCentimeters.main(args);
+console output:
+This program converts feet and inches to centimeters.
+Enter number of feet: 4
+Enter number of inches: 2
+4ft 2in = 127.0cm
+result:
+pass
+
+test #3:
+InchesToCentimeters.main(args);
+console output:
+This program converts feet and inches to centimeters.
+Enter number of feet: 0
+Enter number of inches: 0
+0ft 0in = 0.0cm
+result:
+pass
+
+~~
+import java.util.Scanner;
+
+public class InchesToCentimeters {
+    public static void main(String[] args) {
+        Scanner console = new Scanner(System.in);
+
+        System.out.println("This program converts feet and inches to centimeters.");
+
+        System.out.print("Enter number of feet: ");
+        int feet = console.nextInt();
+
+        System.out.print("Enter number of inches: ");
+        int inches = console.nextInt();
+
+        // Convert to centimeters
+        int totalInches = feet * 12 + inches;
+        double centimeters = totalInches * 2.54;
+
+        System.out.println(feet + "ft " + inches + "in = " + centimeters + "cm");
+    }
+}
+
+~~

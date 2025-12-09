@@ -1,0 +1,73 @@
+https://www.codestepbystep.com/r/problem/view/java/basics/Receipt2
+
+Receipt2
+Language/Type:Javabasicsconsole outputexpressionsvariablesinteractive programs
+Related Links:Scanner
+
+The following console program always computes the same output. Modify it to be an interactive program that prompts the user to enter the meal cost as shown and computes the rest of the values based on that meal cost. Here are two example logs of execution:
+
+What was the meal cost? $50
+Subtotal: 50
+Tax: 4.0
+Tip: 7.5
+Total: 61.5 
+What was the meal cost? $125
+Subtotal: 125
+Tax: 10.0
+Tip: 18.75
+
+~~
+test #1:
+Receipt2.main(args);
+console output:
+What was the meal cost? $50
+Subtotal: 50
+Tax: 4.0
+Tip: 7.5
+Total: 61.5
+result:
+pass
+
+test #2:
+Receipt2.main(args);
+console output:
+What was the meal cost? $125
+Subtotal: 125
+Tax: 10.0
+Tip: 18.75
+Total: 153.75
+result:
+pass
+
+test #3:
+Receipt2.main(args);
+console output:
+What was the meal cost? $1000
+Subtotal: 1000
+Tax: 80.0
+Tip: 150.0
+Total: 1230.0
+result:
+pass
+
+~~
+import java.util.Scanner;
+
+public class Receipt2 {
+    public static void main(String[] args) {
+        Scanner console = new Scanner(System.in);
+
+        System.out.print("What was the meal cost? $");
+        int subtotal = console.nextInt();   // must be int for correct output
+
+        double tax = subtotal * 0.08;
+        double tip = subtotal * 0.15;
+        double total = subtotal + tax + tip;
+
+        System.out.println("Subtotal: " + subtotal);
+        System.out.println("Tax: " + tax);
+        System.out.println("Tip: " + tip);
+        System.out.println("Total: " + total);
+    }
+}
+~~

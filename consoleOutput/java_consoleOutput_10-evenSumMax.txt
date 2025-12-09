@@ -1,0 +1,84 @@
+https://www.codestepbystep.com/r/problem/view/java/basics/evenSumMax
+
+evenSumMax
+Language/Type:Javaconsole I/Ocumulative algorithms
+Related Links:Scanner
+
+Write a method named evenSumMax that prompts the user for many integers and print the total even sum and maximum of the even numbers. You may assume that the user types at least one non-negative even integer.
+
+how many integers? 4
+next integer? 2
+next integer? 9
+next integer? 18
+next integer? 4
+even sum = 24
+even max = 18
+
+~~
+test #1:
+test1
+console output:
+how many integers? 4
+next integer? 2
+next integer? 9
+next integer? 18
+next integer? 4
+even sum = 24
+even max = 18
+result:
+pass
+
+test #2:
+test2
+console output:
+how many integers? 7
+next integer? -2
+next integer? 180
+next integer? 30007
+next integer? 5
+next integer? 9000
+next integer? 419
+next integer? 9000
+even sum = 18178
+even max = 9000
+result:
+pass
+
+test #3:
+test3
+console output:
+how many integers? 1
+next integer? 42
+even sum = 42
+even max = 42
+result:
+pass
+~~
+
+
+public static void evenSumMax() {
+    Scanner console = new Scanner(System.in);
+
+    System.out.print("how many integers? ");
+    int count = console.nextInt();
+
+    int evenSum = 0;
+    int evenMax = Integer.MIN_VALUE;
+
+    for (int i = 0; i < count; i++) {
+        System.out.print("next integer? ");
+        int value = console.nextInt();
+
+        if (value % 2 == 0) {
+            evenSum += value;
+            if (value > evenMax) {
+                evenMax = value;
+            }
+        }
+    }
+
+    System.out.println("even sum = " + evenSum);
+    System.out.println("even max = " + evenMax);
+}
+
+~~

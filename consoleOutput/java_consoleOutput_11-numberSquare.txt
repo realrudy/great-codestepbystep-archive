@@ -1,0 +1,87 @@
+https://www.codestepbystep.com/r/problem/view/java/basics/numberSquare
+
+numberSquare
+Language/Type:Javaparametersfor%
+
+Write a method named numberSquare that accepts two integer parameters, a min and a max, and prints the numbers in the range from min to max inclusive in a square pattern. Each line of the square consists of a wrapping sequence of integers increasing from min and max. The first line begins with min, the second line begins with min + 1, and so on. When the sequence in any line reaches max, it wraps around back to min. You may assume that min is less than or equal to max. For example, the call of numberSquare(1, 5); should print:
+
+12345
+23451
+34512
+45123
+51234
+~~
+test #1:
+numberSquare(1, 5);
+console output:
+12345
+23451
+34512
+45123
+51234
+result:
+pass
+test #2:
+numberSquare(3, 9);
+console output:
+3456789
+4567893
+5678934
+6789345
+7893456
+8934567
+9345678
+result:
+pass
+test #3:
+numberSquare(0, 3);
+console output:
+0123
+1230
+2301
+3012
+result:
+pass
+test #4:
+numberSquare(5, 5);
+console output:
+5
+result:
+pass
+test #5:
+numberSquare(0, 10);
+console output:
+012345678910
+123456789100
+234567891001
+345678910012
+456789100123
+567891001234
+678910012345
+789100123456
+891001234567
+910012345678
+100123456789
+result:
+pass
+~~
+
+
+
+public static void numberSquare(int min, int max) {
+    int size = max - min + 1;
+
+    for (int start = min; start <= max; start++) {
+        for (int i = 0; i < size; i++) {
+            int value = start + i;
+            if (value > max) {
+                value = value - size;  // wrap around
+            }
+            System.out.print(value);
+        }
+        System.out.println();
+    }
+}
+
+
+~~
