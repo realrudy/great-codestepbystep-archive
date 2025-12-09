@@ -1,0 +1,72 @@
+https://codestepbystep.com/r/problem/view/java/strings/isRotation
+isRotation
+Language/Type:Javastringparametersreturnboolean
+Related Links:String
+
+Write a method named isRotation that accepts two strings as parameters and returns true if they are rotations of each other. Two strings are considered rotations if they contain the same characters in the same relative order when wrapped around. For example, the call of isRotation("abcde", "deabc") should return true. The call of isRotation("abcde", "edcba") should return false because the characters are not in the same order. A string is also considered to be its own rotation.
+
+~~
+
+isRotation("abcde", "deabc")      
+→
+true
+isRotation("abcde", "abcde")      
+→
+true
+isRotation("543210", "054321")    
+→
+true
+isRotation("COMPUTER", "UTERCOMP")
+→
+true
+isRotation("x", "x")              
+→
+true
+isRotation("", "")                
+→
+true
+isRotation("x", "x")              
+→
+true
+isRotation("abcde", "edcba")      
+→
+false
+isRotation("abcde", "abcd")       
+→
+false
+isRotation("543210", "543211")    
+→
+false
+isRotation("COMPUTER", "COMPTUER")
+→
+false
+isRotation("x", "y")              
+→
+false
+isRotation("x", "")               
+→
+false
+isRotation("", "y")               
+→
+false
+~~
+
+
+
+
+public static boolean isRotation(String s1, String s2) {
+    if (s1.length() != s2.length()) {
+        return false;
+    }
+    // A string is always a rotation of itself
+    if (s1.equals(s2)) {
+        return true;
+    }
+
+    // Check if s2 appears inside s1+s1
+    String doubled = s1 + s1;
+    return doubled.contains(s2);
+}
+
+
+~~

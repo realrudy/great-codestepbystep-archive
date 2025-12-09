@@ -1,0 +1,69 @@
+https://codestepbystep.com/r/problem/view/java/strings/isPalindrome
+
+ isPalindrome
+Language/Type:Javastringparametersreturnboolean
+Related Links:String
+
+Write a method named isPalindrome that accepts a string parameter and returns true if that string is a palindrome, or false if it is not a palindrome.
+
+For this problem, a palindrome is defined as a string that contains exactly the same sequence of characters forwards as backwards, case-insensitively. For example, "madam" or "racecar" are palindromes, so the call of isPalindrome("racecar") would return true. Spaces, punctuation, and any other characters should be treated the same as letters; so a multi-word string such as "dog god" could be a palindrome, as could a gibberish string such as "123 $$ 321". The empty string and all one-character strings are palindromes by our definition. Your code should ignore case, so a string like "Madam" or "RACEcar" would also count as palindromes.
+
+~~
+
+isPalindrome("madam")                  
+→
+true
+isPalindrome("racecar")                
+→
+true
+isPalindrome("X")                      
+→
+true
+isPalindrome("")                       
+→
+true
+isPalindrome("MaDam")                  
+→
+true
+isPalindrome("Dog GOD")                
+→
+true
+isPalindrome(" 123   $$ ^_^ $$   321 ")
+→
+true
+isPalindrome("XY")                     
+→
+false
+isPalindrome("banana")                 
+→
+false
+isPalindrome("she sells seashells")    
+→
+false
+isPalindrome(" !  ")                   
+→
+false
+
+~~
+
+
+
+
+public static boolean isPalindrome(String s) {
+    s = s.toLowerCase();
+
+    int left = 0;
+    int right = s.length() - 1;
+
+    while (left < right) {
+        if (s.charAt(left) != s.charAt(right)) {
+            return false;
+        }
+        left++;
+        right--;
+    }
+
+    return true;
+}
+
+~~

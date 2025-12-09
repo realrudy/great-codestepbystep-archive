@@ -1,0 +1,65 @@
+https://codestepbystep.com/r/problem/view/java/basics/stanfordVsCal
+
+stanfordVsCal
+Language/Type:Javabasicsconsole output
+Related Links:Scanner
+
+Write a complete Java program named StanfordVsCal with a main method that computes who won the Stanford-Berkeley football game. The program should ask the user for the two scores. You may assume that the user enters valid non-negative integers. Below is an example dialogue (user input is shown like this):
+
+Stanford: How many points did they score? 87
+Cal: How many points did they score? 3
+Stanford won!
+
+~~
+
+test #1:
+StanfordVsCal.main(args);
+console output:
+Stanford: How many points did they score? 87
+Cal: How many points did they score? 3
+Stanford won!
+result:
+pass
+test #2:
+StanfordVsCal.main(args);
+console output:
+Stanford: How many points did they score? 21
+Cal: How many points did they score? 24
+Cal won!
+result:
+pass
+
+~~
+
+
+import java.util.Scanner;
+
+public class StanfordVsCal {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Ask for Stanford's score
+        System.out.print("Stanford: How many points did they score? ");
+        int stanfordScore = scanner.nextInt();
+
+        // Ask for Cal's score
+        System.out.print("Cal: How many points did they score? ");
+        int calScore = scanner.nextInt();
+
+        // Determine and print the winner
+        if (stanfordScore > calScore) {
+            System.out.println("Stanford won!");
+        } else if (calScore > stanfordScore) {
+            System.out.println("Cal won!");
+        } else {
+            System.out.println("It's a tie!");
+        }
+
+        scanner.close();
+    }
+}
+
+
+
+
+~~

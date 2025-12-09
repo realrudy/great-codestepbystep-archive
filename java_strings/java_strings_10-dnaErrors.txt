@@ -1,0 +1,94 @@
+https://codestepbystep.com/r/problem/view/java/strings/dnaErrors
+
+dnaErrors
+Language/Type:Javastringparametersreturn
+Related Links:StringMath
+Author:Keith Schwarz (added by Marty Stepp) on 2017/05/04
+
+Write a method named dnaErrors that accepts two strings representing DNA sequences as parameters and returns an integer representing the number of errors found between the two sequences, using a formula described below. DNA contains nucleotides, which are represented by four different letters A, C, T, and G. DNA is made up of a pair of nucleotide strands, where a letter from the first strand is paired with a corresponding letter from the second. The letters are paired as follows:
+
+A is paired with T and vice-versa.
+C is paired with G and vice-versa.
+Below are two perfectly matched DNA strands. Notice how the letters are paired up according to the above rules.
+
+"GCATGGATTAATATGAGACGACTAATAGGATAGTTACAACCCTTACGTCACCGCCTTGA"
+ |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+"CGTACCTAATTATACTCTGCTGATTATCCTATCAATGTTGGGAATGCAGTGGCGGAACT"
+In some cases, errors occur within DNA molecules; the task of your method is to find two particular kinds of errors:
+
+Unmatched nucleotides, in which one strand contains a dash ('-') at a given index, or does not contain a nucleotide at the given index (if the strings are not the same length). Each of these counts as 1 error.
+Point mutations, in which a letter from one strand is matched against the wrong letter in the other strand. For example, A might accidentally pair with C, or G might pair with G. Each of these counts as 2 errors.
+For example, consider these two DNA strands:
+
+index 01234567890123456789012
+     "GGGA-GAATCTCTGGACT"
+     "CTCTACTTA-AGACCGGTACAGG"
+This pair of strands has three point mutations (at indexes 1, 15, and 17), and seven unmatched nucleotides (dashes at indexes 4 and 9, and nucleotides in the second string with no match at indexes 18-22). The point mutations count as a total of 3 * 2 = 6 errors, and the unmatched nucleotides count as 7 * 1 = 7 errors, so your method would return an error count of 6+7 = 13 total errors if passed the two above strands.
+
+You may assume that each string consists purely of the characters A, C, T, G, and - (the dash character), but the letters could appear in either upper or lowercase. The strings might be the same length, or the first or second might be longer than the other. Either string could be very long, very short, or even the empty string. If the strings match perfectly with no errors as defined above, your method should return 0.
+
+~~
+
+dnaErrors("GCATGGATTAATATGAGACGACTAATAGGATAGTTACAACCCTTACGTCACCGCCTTGA", "CGTACCTAATTATACTCTGCTGATTATCCTATCAATGTTGGGAATGCAGTGGCGGAACT")
+→
+0
+dnaErrors("GCATGGATTAATATGAG-CGACTACTAGGATAGTTGCAACCCTTACGTCACCGCC-TGA", "-GTACCTAATTATACTCTGCTGTATCCTAT-AATGTTGGGAATGCAGTGGCGGAACT")  
+→
+64
+dnaErrors("GGGA-GAATCTCTGGACT", "CTCTACTTA-AGACCGGTACAGG")                                                                             
+→
+13
+dnaErrors("T", "C")                                                                                                                    
+→
+2
+dnaErrors("T", "-")                                                                                                                    
+→
+1
+dnaErrors("", "A")                                                                                                                     
+→
+1
+dnaErrors("", "")                                                                                                                      
+→
+0
+~~
+
+
+public static int dnaErrors(String s1, String s2) {
+    s1 = s1.toUpperCase();
+    s2 = s2.toUpperCase();
+
+    int errors = 0;
+    int maxLen = Math.max(s1.length(), s2.length());
+
+    for (int i = 0; i < maxLen; i++) {
+
+        if (i >= s1.length() || i >= s2.length()) {
+            errors += 1;
+            continue;
+        }
+
+        char c1 = s1.charAt(i);
+        char c2 = s2.charAt(i);
+
+        if (c1 == '-' || c2 == '-') {
+            errors += 1;
+            continue;
+        }
+
+        boolean correctPair =
+                (c1 == 'A' && c2 == 'T') ||
+                (c1 == 'T' && c2 == 'A') ||
+                (c1 == 'C' && c2 == 'G') ||
+                (c1 == 'G' && c2 == 'C');
+
+        if (!correctPair) {
+            errors += 2;  
+        }
+    }
+
+    return errors;
+}
+
+
+
+~~

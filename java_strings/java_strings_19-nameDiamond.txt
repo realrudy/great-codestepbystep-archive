@@ -1,0 +1,78 @@
+https://codestepbystep.com/r/problem/view/java/strings/nameDiamond
+
+ nameDiamond
+Language/Type:Javastringparameters
+Related Links:String
+
+Write a method named nameDiamond that accepts a string as a parameter and prints it in a "diamond" format as shown below. For example, the call of nameDiamond("MARTY"); should print:
+
+M
+MA
+MAR
+MART
+MARTY
+ ARTY
+  RTY
+   TY
+    Y
+
+~~
+test #1:
+nameDiamond("MARTY");
+console output:
+M
+MA
+MAR
+MART
+MARTY
+ ARTY
+  RTY
+   TY
+    Y
+result:
+pass
+test #2:
+nameDiamond("Bill Nye");
+console output:
+B
+Bi
+Bil
+Bill
+Bill 
+Bill N
+Bill Ny
+Bill Nye
+ ill Nye
+  ll Nye
+   l Nye
+     Nye
+     Nye
+      ye
+       e
+result:
+pass
+
+~~
+public static void nameDiamond(String name) {
+    int n = name.length();
+
+    // top half: growing
+    for (int i = 1; i <= n; i++) {
+        System.out.println(name.substring(0, i));
+    }
+
+    // bottom half: shrinking
+    for (int i = 1; i < n; i++) {
+        // print leading spaces
+        for (int j = 0; j < i; j++) {
+            System.out.print(" ");
+        }
+        // print remaining substring
+        System.out.println(name.substring(i));
+    }
+}
+
+
+
+
+~~

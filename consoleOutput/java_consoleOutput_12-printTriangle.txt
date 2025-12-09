@@ -1,0 +1,44 @@
+https://codestepbystep.com/r/problem/view/java/basics/printTriangle
+
+printTriangle
+Language/Type:Javafornested loopsascii art
+
+Write a method named printTriangle that uses for loops to produce the following output:
+
+#
+##
+###
+####
+#####
+######
+
+~~
+
+test #1:
+output
+console output:
+#
+##
+###
+####
+#####
+######
+result:
+pass
+
+~~
+
+
+    // Make the method static so main can call it directly
+    public static void printTriangle() {
+        for (int i = 1; i <= 6; i++) {        // for each row
+            for (int j = 1; j <= i; j++) {    // print '#' i times
+                System.out.print("#");
+            }
+            System.out.println();              // move to next line
+        }
+    }
+
+
+
+~~

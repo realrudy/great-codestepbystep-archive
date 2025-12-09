@@ -1,0 +1,50 @@
+https://codestepbystep.com/r/problem/view/java/strings/isVowel
+ isVowel
+Language/Type:Javastring
+Related Links:String
+
+Write a method named isVowel that returns whether a string is a vowel (a single-letter string containing a, e, i, o, or u, case-insensitively).
+
+~~
+isVowel("q")    
+→
+false
+isVowel("A")    
+→
+true
+isVowel("e")    
+→
+true
+isVowel("X")    
+→
+false
+isVowel("O")    
+→
+true
+isVowel("u")    
+→
+true
+isVowel("Borat")
+→
+false
+isVowel("obama")
+→
+false
+isVowel("")     
+→
+false
+~~
+
+
+public static boolean isVowel(String s) {
+    if (s.length() != 1) {
+        return false;
+    }
+
+    char c = Character.toLowerCase(s.charAt(0));
+    return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';
+}
+
+
+
+~~

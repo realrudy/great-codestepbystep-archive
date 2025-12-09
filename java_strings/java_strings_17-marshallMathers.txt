@@ -1,0 +1,71 @@
+https://codestepbystep.com/r/problem/view/java/strings/marshallMathers
+
+ marshallMathers
+Language/Type:Javastring
+
+Given the following variable declarations:
+
+// index       0123456789012345678901234
+String s1   = "Snoop Dogg";
+String s2   = "Marshall 'Eminem' Mathers";
+String s3   = s2.substring(18);
+String book = "Art & Science of Java";
+Give the results of the following expressions. Make sure to indicate a value of the proper type (e.g. strings in " " quotes).
+
+s1.length()
+s2.length()
+s1.indexOf("o")
+s2.indexOf("x")
+s1.substring(6, 9)
+s2.substring(21)
+book.substring(6, 12)
+s3.toLowerCase()
+
+~~
+
+
+s1.length()          
+→
+10
+s2.length()          
+→
+25
+s1.indexOf("o")      
+→
+2
+s2.indexOf("x")      
+→
+-1
+s1.substring(6, 9)   
+→
+"Dog"
+s2.substring(21)     
+→
+"hers"
+book.substring(6, 12)
+→
+"Scienc"
+s3.toLowerCase()     
+→
+"mathers"
+
+~~
+
+s1.length()
+10
+s2.length()
+25
+s1.indexOf("o")
+2
+s2.indexOf("x")
+-1
+s1.substring(6, 9)
+"Dog"
+s2.substring(21)
+"hers"
+book.substring(6, 12)
+"Scienc"
+s3.toLowerCase()
+"mathers"
+
+~~

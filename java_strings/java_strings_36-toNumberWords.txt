@@ -1,0 +1,238 @@
+https://codestepbystep.com/r/problem/view/java/strings/toNumberWords
+
+toNumberWords
+Language/Type:Javastringparametersreturn
+Related Links:String
+
+Write a method named toNumberWords that accepts an integer in the range -999,999,999 through 999,999,999 inclusive and returns a written English description of that number. For example, the call of toNumberWords(4298) returns "four thousand two hundred ninety eight".
+~~
+test #1:
+toNumberWords(0)
+return:
+"zero"
+result:
+pass
+test #2:
+toNumberWords(1)
+return:
+"one"
+result:
+pass
+test #3:
+toNumberWords(4)
+return:
+"four"
+result:
+pass
+test #4:
+toNumberWords(9)
+return:
+"nine"
+result:
+pass
+test #5:
+toNumberWords(15)
+return:
+"fifteen"
+result:
+pass
+test #6:
+toNumberWords(21)
+return:
+"twenty one"
+result:
+pass
+test #7:
+toNumberWords(35)
+return:
+"thirty five"
+result:
+pass
+test #8:
+toNumberWords(102)
+return:
+"one hundred two"
+result:
+pass
+test #9:
+toNumberWords(379)
+return:
+"three hundred seventy nine"
+result:
+pass
+test #10:
+toNumberWords(1000)
+return:
+"one thousand"
+result:
+pass
+test #11:
+toNumberWords(2054)
+return:
+"two thousand fifty four"
+result:
+pass
+test #12:
+toNumberWords(4298)
+return:
+"four thousand two hundred ninety eight"
+result:
+pass
+test #13:
+toNumberWords(4298)
+return:
+"four thousand two hundred ninety eight"
+result:
+pass
+test #14:
+toNumberWords(12045)
+return:
+"twelve thousand forty five"
+result:
+pass
+test #15:
+toNumberWords(77777)
+return:
+"seventy seven thousand seven hundred seventy seven"
+result:
+pass
+test #16:
+toNumberWords(100101)
+return:
+"one hundred thousand one hundred one"
+result:
+pass
+test #17:
+toNumberWords(897003)
+return:
+"eight hundred ninety seven thousand three"
+result:
+pass
+test #18:
+toNumberWords(1000000)
+return:
+"one million"
+result:
+pass
+test #19:
+toNumberWords(12005006)
+return:
+"twelve million five thousand six"
+result:
+pass
+test #20:
+toNumberWords(63072123)
+return:
+"sixty three million seventy two thousand one hundred twenty three"
+result:
+pass
+test #21:
+toNumberWords(999999999)
+return:
+"nine hundred ninety nine million nine hundred ninety nine thousand nine hundred ninety ni...
+result:
+pass
+test #22:
+toNumberWords(-1)
+return:
+"negative one"
+result:
+pass
+test #23:
+toNumberWords(-35)
+return:
+"negative thirty five"
+result:
+pass
+test #24:
+toNumberWords(-100101)
+return:
+"negative one hundred thousand one hundred one"
+result:
+pass
+test #25:
+toNumberWords(-999999999)
+return:
+"negative nine hundred ninety nine million nine hundred ninety nine thousand nine hundred ...
+result:
+pass
+~~
+public String toNumberWords(int n) {
+    if (n == 0) {
+        return "zero";
+    }
+
+    if (n < 0) {
+        return "negative " + toNumberWords(-n);
+    }
+
+    return convertMillions(n).trim();
+}
+
+// Convert millions, thousands, hundreds
+private String convertMillions(int n) {
+    StringBuilder sb = new StringBuilder();
+
+    if (n / 1_000_000 > 0) {
+        sb.append(convertHundreds(n / 1_000_000)).append(" million");
+        n %= 1_000_000;
+        if (n > 0) sb.append(" ");
+    }
+
+    if (n / 1_000 > 0) {
+        sb.append(convertHundreds(n / 1_000)).append(" thousand");
+        n %= 1_000;
+        if (n > 0) sb.append(" ");
+    }
+
+    if (n > 0) {
+        sb.append(convertHundreds(n));
+    }
+
+    return sb.toString();
+}
+
+// Convert numbers from 1 to 999
+private String convertHundreds(int n) {
+    StringBuilder sb = new StringBuilder();
+    if (n / 100 > 0) {
+        sb.append(ones[n / 100]).append(" hundred");
+        n %= 100;
+        if (n > 0) sb.append(" ");
+    }
+    if (n > 0) {
+        sb.append(convertTens(n));
+    }
+    return sb.toString();
+}
+
+// Convert numbers from 1 to 99
+private String convertTens(int n) {
+    if (n < 10) {
+        return ones[n];
+    } else if (n < 20) {
+        return teens[n - 10];
+    } else {
+        String result = tens[n / 10];
+        if (n % 10 > 0) {
+            result += " " + ones[n % 10];
+        }
+        return result;
+    }
+}
+
+// Lookup tables
+private final String[] ones = {
+    "", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"
+};
+
+private final String[] teens = {
+    "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", 
+    "sixteen", "seventeen", "eighteen", "nineteen"
+};
+
+private final String[] tens = {
+    "", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"
+};
+
+~~

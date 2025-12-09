@@ -1,0 +1,107 @@
+https://codestepbystep.com/r/problem/view/java/strings/NameGame
+
+NameGame
+Language/Type:Javastringinteractive programs
+Related Links:Scanner
+
+Write a console program in a class named NameGame that prints the following rhyme about the person's first and last name. You may assume that the user types a string with exactly one space.
+
+What is your name? Fifty Cent
+Fifty, Fifty, bo-Bifty
+Banana-fana fo-Fifty
+Fee-fi-mo-Mifty
+FIFTY!
+
+Cent, Cent, bo-Bent
+Banana-fana fo-Fent
+Fee-fi-mo-Ment
+CENT! 
+
+~~
+Fifty Cent
+console output:
+What is your name? Fifty Cent
+Fifty, Fifty, bo-Bifty
+Banana-fana fo-Fifty
+Fee-fi-mo-Mifty
+FIFTY!
+
+Cent, Cent, bo-Bent
+Banana-fana fo-Fent
+Fee-fi-mo-Ment
+CENT!
+result:
+pass
+test #2:
+Bart Simpson
+console output:
+What is your name? Bart Simpson
+Bart, Bart, bo-Bart
+Banana-fana fo-Fart
+Fee-fi-mo-Mart
+BART!
+
+Simpson, Simpson, bo-Bimpson
+Banana-fana fo-Fimpson
+Fee-fi-mo-Mimpson
+SIMPSON!
+result:
+pass
+test #3:
+Foo Bar
+console output:
+What is your name? Foo Bar
+Foo, Foo, bo-Boo
+Banana-fana fo-Foo
+Fee-fi-mo-Moo
+FOO!
+
+Bar, Bar, bo-Bar
+Banana-fana fo-Far
+Fee-fi-mo-Mar
+BAR!
+result:
+pass
+~~
+
+import java.util.Scanner;
+
+public class NameGame {
+    public static void main(String[] args) {
+        Scanner console = new Scanner(System.in);
+
+        // Ask for the user's name
+        System.out.print("What is your name? ");
+        String fullName = console.nextLine().trim();
+
+        // Split into first and last name
+        int spaceIndex = fullName.indexOf(" ");
+        String firstName = fullName.substring(0, spaceIndex);
+        String lastName = fullName.substring(spaceIndex + 1);
+
+        // Print the rhyme for first name
+        printRhyme(firstName);
+
+        // Print a blank line between first and last name rhymes
+        System.out.println();
+
+        // Print the rhyme for last name
+        printRhyme(lastName);
+    }
+
+    // Method to print the rhyme for a single name
+    private static void printRhyme(String name) {
+        String firstLetter = name.substring(0, 1);
+        String rest = name.substring(1);
+
+        System.out.println(name + ", " + name + ", bo-B" + rest);
+        System.out.println("Banana-fana fo-F" + rest);
+        System.out.println("Fee-fi-mo-M" + rest);
+        System.out.println(name.toUpperCase() + "!");
+    }
+}
+
+
+
+
+~~

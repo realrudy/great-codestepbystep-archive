@@ -1,0 +1,49 @@
+https://codestepbystep.com/r/problem/view/java/strings/switchPairs
+switchPairs
+Language/Type:Javastringreturn
+Related Links:String
+
+Write a method named switchPairs that accepts a string as a parameter and returns that string with each pair of neighboring letters reversed. If the string has an odd number of letters, the last letter should not be modified. For example, the call switchPairs("example") should return "xemalpe" and the call switchPairs("hello there") should return "ehll ohtree".
+~~
+
+switchPairs("example")    
+→
+"xemalpe"
+switchPairs("hello there")
+→
+"ehll ohtree"
+switchPairs("homework")   
+→
+"ohemowkr"
+switchPairs("x")          
+→
+"x"
+switchPairs("")           
+→
+""
+~~
+
+
+public String switchPairs(String s) {
+    StringBuilder result = new StringBuilder();
+    int i = 0;
+
+    while (i < s.length()) {
+        if (i + 1 < s.length()) {
+            // Swap the current pair of characters
+            result.append(s.charAt(i + 1));
+            result.append(s.charAt(i));
+            i += 2; // move to the next pair
+        } else {
+            // If there's a single character left at the end, append it as is
+            result.append(s.charAt(i));
+            i++;
+        }
+    }
+
+    return result.toString();
+}
+
+
+
+~~

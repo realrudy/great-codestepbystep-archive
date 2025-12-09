@@ -1,0 +1,81 @@
+https://codestepbystep.com/r/problem/view/java/strings/zigzagConvert
+
+ zigzagConvert
+Language/Type:Javastringparametersreturn
+Related Links:String
+
+Write a method named zigzagConvert that accepts a string and an integer representing a number of rows as parameters and returns a new string as follows. Think of the string's characters being displayed in columns into a "zigzag" pattern based on the given number of rows. For example, the call of zigzagConvert("ABCDEFGHIJKLMNOPQRS", 5) would think of the characters of the string as being placed into a pattern as follows:
+
+         column
+row 1 2 3 4 5 6 7 8 9 
+ 1  A       I       Q
+ 2  B     H J     P R
+ 3  C   G   K   O   S
+ 4  D F     L N
+ 5  E       M
+Your function should reorder the letters to be read left-to-right in row-major order. Row 1 in our example contains "AIQ", then row 2 contains "BHJPR", and so on. So this call would return "AIQBHJPRCGKOSDFLNEM". If the number of rows is 0 or less, return an empty string.
+
+~~
+
+zigzagConvert("ABCDEFGHIJKLMNOPQRS", 5)               
+→
+"AIQBHJPRCGKOSDFLNEM"
+zigzagConvert("ABCDEFGHIJKLMNOPQRS", 4)               
+→
+"AGMSBFHLNRCEIKOQDJP"
+zigzagConvert("ABCDEFGH", 2)                          
+→
+"ACEGBDFH"
+zigzagConvert("ABCDEFGHIJKLMNOPQRST", 9)              
+→
+"AQBPRCOSDNTEMFLGKHJI"
+zigzagConvert("TUVWXYZ", 3)                           
+→
+"TXUWYVZ"
+zigzagConvert("supercalifragilisticexpialadocious", 7)
+→
+"sgauaiilprlpaefixdsriseoucltccoaii"
+zigzagConvert("ABCD", 1)                              
+→
+"ABCD"
+zigzagConvert("ABCD", 0)                              
+→
+""
+~~
+
+
+public String zigzagConvert(String s, int numRows) {
+    if (numRows <= 0) return "";           // handle invalid row numbers
+    if (numRows == 1) return s;            // special case: one row, no zigzag
+
+    StringBuilder result = new StringBuilder();
+    int len = s.length();
+    int cycleLen = 2 * numRows - 2;        // full zigzag cycle length
+
+    // loop over each row
+    for (int row = 0; row < numRows; row++) {
+        int index = row;
+        while (index < len) {
+            // append the character in the current column
+            result.append(s.charAt(index));
+
+            // calculate the index of the "diagonal" element for middle rows
+            if (row != 0 && row != numRows - 1) {
+                int diagIndex = index + cycleLen - 2 * row;
+                if (diagIndex < len) {
+                    result.append(s.charAt(diagIndex));
+                }
+            }
+
+            // move to the next vertical element in the current row
+            index += cycleLen;
+        }
+    }
+
+    return result.toString();
+}
+
+
+
+
+~~

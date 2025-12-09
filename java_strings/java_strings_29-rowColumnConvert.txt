@@ -1,0 +1,62 @@
+https://codestepbystep.com/r/problem/view/java/strings/rowColumnConvert
+ rowColumnConvert
+Language/Type:Javastringparametersreturn
+Related Links:String
+
+Write a method named rowColumnConvert that accepts a string and an integer representing a number of rows as parameters and returns a new string as follows. Think of the string's characters being displayed downward in columns in the given number of rows. For example, the call of rowColumnConvert("ABCDEFGHIJKLMN", 3) would think of the characters of the string as being placed into 3 rows as follows:
+
+      column
+row 1 2 3 4 5
+ 1  A D G J M
+ 2  B E H K N
+ 3  C F I L
+Your function should reorder the letters to be read left-to-right in row-major order, so this call would return "ADGJMBEHKNCFIL". Notice that the string's length may not be an exact multiple of the number of rows, such as column 5 in our example containing only "MN". If the number of rows is 0 or less, return an empty string.
+
+You should not need to use any auxiliary collections (array, list, map) to solve this problem.
+~~
+
+rowColumnConvert("ABCDEFGHIJKLMN", 3)                     
+→
+"ADGJMBEHKNCFIL"
+rowColumnConvert("Hello There my friend", 2)              
+→
+"HloTeem redel hr yfin"
+rowColumnConvert("Programmer", 5)                         
+→
+"Parmomgerr"
+rowColumnConvert("supercalifragilisticexpialadocious", 11)
+→
+"sapsugipiaellriacsdatolicicifeorxu"
+rowColumnConvert("Testing", 1)                            
+→
+"Testing"
+rowColumnConvert("ABC", 0)                                
+→
+""
+~~
+
+public String rowColumnConvert(String s, int numRows) {
+    if (numRows <= 0) {
+        return ""; // Handle invalid number of rows
+    }
+
+    StringBuilder result = new StringBuilder();
+    int length = s.length();
+
+    // Iterate over each row
+    for (int row = 0; row < numRows; row++) {
+        int index = row;
+        // Collect characters for this row
+        while (index < length) {
+            result.append(s.charAt(index));
+            index += numRows; // Move down the column to the next character in this row
+        }
+    }
+
+    return result.toString();
+}
+
+
+
+
+~~

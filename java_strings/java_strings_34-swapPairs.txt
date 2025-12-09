@@ -1,0 +1,56 @@
+https://codestepbystep.com/r/problem/view/java/strings/swapPairs
+
+ swapPairs
+Language/Type:Javastringreturn
+Related Links:String
+
+Write a method named swapPairs that accepts a string as a parameter and returns a new string such that each pair of adjacent letters will be reversed. If the string has an odd number of letters, the last letter is unchanged. For example, if a string variable s stores "example", the call of swapPairs(s); should return "xemalpe". If s had been "hello there", the call would produce "ehll ohtree".
+
+~~
+
+
+swapPairs("example")             
+→
+"xemalpe"
+swapPairs("hello there")         
+→
+"ehll ohtree"
+swapPairs("Martin Douglas Stepp")
+→
+"aMtrniD uolgsaS etpp"
+swapPairs("AB")                  
+→
+"BA"
+swapPairs("X")                   
+→
+"X"
+swapPairs("")                    
+→
+""
+
+~~
+public String swapPairs(String s) {
+    StringBuilder result = new StringBuilder();
+    int i = 0;
+
+    while (i < s.length()) {
+        if (i + 1 < s.length()) {
+            // Swap the pair of characters
+            result.append(s.charAt(i + 1));
+            result.append(s.charAt(i));
+            i += 2;
+        } else {
+            // If there's a single character left at the end, just append it
+            result.append(s.charAt(i));
+            i++;
+        }
+    }
+
+    return result.toString();
+}
+
+
+
+
+
+~~

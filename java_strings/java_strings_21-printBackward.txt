@@ -1,0 +1,51 @@
+https://codestepbystep.com/r/problem/view/java/strings/printBackward
+
+printBackward
+Language/Type:Javaparametersstring
+Related Links:String
+
+Write a method named printBackward that accepts a String as its parameter and prints the characters in the opposite order. For example, a call of printBackward("hello there!"); should print the following output:
+
+!ereht olleh
+If the empty string is passed, no output should be produced.
+
+~~
+
+printBackward("hello there!");                       
+→
+!ereht olleh
+printBackward(" BooYah!! ");                         
+→
+ !!haYooB 
+printBackward("evian");                              
+→
+naive
+printBackward("she sells seashells by the seashore");
+→
+erohsaes eht yb sllehsaes slles ehs
+printBackward("X");                                  
+→
+X
+printBackward("");                                   
+→
+~~
+
+
+
+public static void printBackward(String str) {
+    // If the string is empty, do nothing
+    if (str.length() == 0) {
+        return;
+    }
+
+    // Loop from the last character to the first
+    for (int i = str.length() - 1; i >= 0; i--) {
+        System.out.print(str.charAt(i));
+    }
+
+    // Print a newline at the end
+    System.out.println();
+}
+
+
+~~

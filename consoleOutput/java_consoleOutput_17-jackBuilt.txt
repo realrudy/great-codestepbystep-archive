@@ -1,0 +1,186 @@
+https://codestepbystep.com/r/problem/view/java/basics/JackBuilt
+JackBuilt
+Language/Type:Javabasicsconsole outputescape sequencesmethods
+
+Write a complete Java program in a class named JackBuilt that prints the following cumulative song as console output. Use methods to capture the structure of the song and to eliminate redundancy. For example, no complete line of output should be println'd in two or more places in your code.
+
+This is the house that Jack built.
+
+This is the malt
+That lay in the house that Jack built.
+
+This is the rat,
+That ate the malt
+That lay in the house that Jack built.
+
+This is the cat,
+That killed the rat,
+That ate the malt
+That lay in the house that Jack built.
+
+This is the dog,
+That worried the cat,
+That killed the rat,
+That ate the malt
+That lay in the house that Jack built.
+
+This is the cow with the crumpled horn,
+That tossed the dog,
+That worried the cat,
+That killed the rat,
+That ate the malt
+That lay in the house that Jack built.
+
+This is the maiden all forlorn
+That milked the cow with the crumpled horn,
+That tossed the dog,
+That worried the cat,
+That killed the rat,
+That ate the malt
+That lay in the house that Jack built.
+
+~~
+test #1:
+output
+console output:
+This is the house that Jack built.
+
+This is the malt
+That lay in the house that Jack built.
+
+This is the rat,
+That ate the malt
+That lay in the house that Jack built.
+
+This is the cat,
+That killed the rat,
+That ate the malt
+That lay in the house that Jack built.
+
+This is the dog,
+That worried the cat,
+That killed the rat,
+That ate the malt
+That lay in the house that Jack built.
+
+This is the cow with the crumpled horn,
+That tossed the dog,
+That worried the cat,
+That killed the rat,
+That ate the malt
+That lay in the house that Jack built.
+
+This is the maiden all forlorn
+That milked the cow with the crumpled horn,
+That tossed the dog,
+That worried the cat,
+That killed the rat,
+That ate the malt
+That lay in the house that Jack built.
+
+result:
+pass
+
+~~
+public class JackBuilt {
+
+    public static void main(String[] args) {
+        verseHouse();
+        verseMalt();
+        verseRat();
+        verseCat();
+        verseDog();
+        verseCow();
+        verseMaiden();
+    }
+
+    // Verse 1
+    public static void verseHouse() {
+        System.out.println("This is the house that Jack built.");
+        System.out.println();
+    }
+
+    // Verse 2
+    public static void verseMalt() {
+        System.out.println("This is the malt");
+        lineHouse();
+        System.out.println();
+    }
+
+    // Verse 3
+    public static void verseRat() {
+        System.out.println("This is the rat,");
+        lineAteMalt();
+        lineHouse();
+        System.out.println();
+    }
+
+    // Verse 4
+    public static void verseCat() {
+        System.out.println("This is the cat,");
+        lineKilledRat();
+        lineAteMalt();
+        lineHouse();
+        System.out.println();
+    }
+
+    // Verse 5
+    public static void verseDog() {
+        System.out.println("This is the dog,");
+        lineWorriedCat();
+        lineKilledRat();
+        lineAteMalt();
+        lineHouse();
+        System.out.println();
+    }
+
+    // Verse 6
+    public static void verseCow() {
+        System.out.println("This is the cow with the crumpled horn,");
+        lineTossedDog();
+        lineWorriedCat();
+        lineKilledRat();
+        lineAteMalt();
+        lineHouse();
+        System.out.println();
+    }
+
+    // Verse 7
+    public static void verseMaiden() {
+        System.out.println("This is the maiden all forlorn");
+        lineMilkedCow();
+        lineTossedDog();
+        lineWorriedCat();
+        lineKilledRat();
+        lineAteMalt();
+        lineHouse();
+        System.out.println();
+    }
+
+    // Reusable lines
+    public static void lineHouse() {
+        System.out.println("That lay in the house that Jack built.");
+    }
+
+    public static void lineAteMalt() {
+        System.out.println("That ate the malt");
+    }
+
+    public static void lineKilledRat() {
+        System.out.println("That killed the rat,");
+    }
+
+    public static void lineWorriedCat() {
+        System.out.println("That worried the cat,");
+    }
+
+    public static void lineTossedDog() {
+        System.out.println("That tossed the dog,");
+    }
+
+    public static void lineMilkedCow() {
+        System.out.println("That milked the cow with the crumpled horn,");
+    }
+}
+
+~~

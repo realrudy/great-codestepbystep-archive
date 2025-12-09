@@ -1,0 +1,159 @@
+https://codestepbystep.com/r/problem/view/java/basics/SixDays
+
+SixDays
+Language/Type:Javabasicsconsole outputescape sequencesmethods
+
+Write a complete Java program in a class named SixDays that prints the following cumulative song as console output. Use methods to capture the structure of the song and to eliminate redundancy. For example, no complete line of output should be println'd in two or more places in your code.
+
+On the 1st day of "Xmas", my true love gave to me
+a partridge in a pear tree.
+
+On the 2nd day of "Xmas", my true love gave to me
+two turtle doves, and
+a partridge in a pear tree.
+    
+On the 3rd day of "Xmas", my true love gave to me
+three French hens,
+two turtle doves, and
+a partridge in a pear tree.
+
+On the 4th day of "Xmas", my true love gave to me
+four calling birds,
+three French hens,
+two turtle doves, and
+a partridge in a pear tree.
+
+On the 5th day of "Xmas", my true love gave to me
+five golden rings,
+four calling birds,
+three French hens,
+two turtle doves, and
+a partridge in a pear tree.
+
+On the 6th day of "Xmas", my true love gave to me
+six geese a-laying,
+five golden rings,
+four calling birds,
+three French hens,
+two turtle doves, and
+a partridge in a pear tree.
+
+~~
+test #1:
+output
+console output:
+On the 1st day of "Xmas", my true love gave to me
+a partridge in a pear tree.
+
+On the 2nd day of "Xmas", my true love gave to me
+two turtle doves, and
+a partridge in a pear tree.
+
+On the 3rd day of "Xmas", my true love gave to me
+three French hens,
+two turtle doves, and
+a partridge in a pear tree.
+
+On the 4th day of "Xmas", my true love gave to me
+four calling birds,
+three French hens,
+two turtle doves, and
+a partridge in a pear tree.
+
+On the 5th day of "Xmas", my true love gave to me
+five golden rings,
+four calling birds,
+three French hens,
+two turtle doves, and
+a partridge in a pear tree.
+
+On the 6th day of "Xmas", my true love gave to me
+six geese a-laying,
+five golden rings,
+four calling birds,
+three French hens,
+two turtle doves, and
+a partridge in a pear tree.
+
+result:
+pass
+~~
+public class SixDays {
+
+    public static void main(String[] args) {
+        singDay1();
+        singDay2();
+        singDay3();
+        singDay4();
+        singDay5();
+        singDay6();
+    }
+
+    public static void singDay1() {
+        System.out.println("On the " + ordinal(1) + " day of \"Xmas\", my true love gave to me");
+        gifts(1);
+        System.out.println();
+    }
+
+    public static void singDay2() {
+        System.out.println("On the " + ordinal(2) + " day of \"Xmas\", my true love gave to me");
+        gifts(2);
+        System.out.println();
+    }
+
+    public static void singDay3() {
+        System.out.println("On the " + ordinal(3) + " day of \"Xmas\", my true love gave to me");
+        gifts(3);
+        System.out.println();
+    }
+
+    public static void singDay4() {
+        System.out.println("On the " + ordinal(4) + " day of \"Xmas\", my true love gave to me");
+        gifts(4);
+        System.out.println();
+    }
+
+    public static void singDay5() {
+        System.out.println("On the " + ordinal(5) + " day of \"Xmas\", my true love gave to me");
+        gifts(5);
+        System.out.println();
+    }
+
+    public static void singDay6() {
+        System.out.println("On the " + ordinal(6) + " day of \"Xmas\", my true love gave to me");
+        gifts(6);
+        System.out.println();
+    }
+
+    // Method to print gifts cumulatively
+    public static void gifts(int day) {
+        switch(day) {
+            case 6:
+                System.out.println("six geese a-laying,");
+            case 5:
+                System.out.println("five golden rings,");
+            case 4:
+                System.out.println("four calling birds,");
+            case 3:
+                System.out.println("three French hens,");
+            case 2:
+                System.out.println("two turtle doves, and");
+            case 1:
+                System.out.println("a partridge in a pear tree.");
+        }
+    }
+
+    // Method to convert numbers to ordinal strings
+    public static String ordinal(int day) {
+        switch(day) {
+            case 1: return "1st";
+            case 2: return "2nd";
+            case 3: return "3rd";
+            case 4: return "4th";
+            case 5: return "5th";
+            case 6: return "6th";
+            default: return day + "th";
+        }
+    }
+}
+~~

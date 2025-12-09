@@ -1,0 +1,95 @@
+https://codestepbystep.com/r/problem/view/java/strings/multiplyNumeric
+
+multiplyNumeric
+Language/Type:Javastringreturn
+Related Links:String
+
+Write a method named multiplyNumeric that accepts as parameters two strings representing base-10 integers and returns a string representing the base-10 integer sum that would result from multiplying those two integers. For example, the call of multiplyNumeric("11", "15") returns "165" because 11 * 15 = 165. The strings might not be the same length; the call of multiplyNumeric("16", "256") returns "4096".
+
+You may assume that both strings will be non-empty and will consist entirely of the characters from 0-9. You may not assume that the binary numbers represented would fit into the numeric range of type int nor long. You should not use Java's built-in conversion methods to convert strings into integers, nor a large-integer library such as BigInteger.
+
+~~
+
+
+multiplyNumeric("11", "15")                                                      
+→
+"165"
+multiplyNumeric("42", "17")                                                      
+→
+"714"
+multiplyNumeric("16", "256")                                                     
+→
+"4096"
+multiplyNumeric("999", "999")                                                    
+→
+"998001"
+multiplyNumeric("123", "456")                                                    
+→
+"56088"
+multiplyNumeric("176", "81932")                                                  
+→
+"14420032"
+multiplyNumeric("3147", "88")                                                    
+→
+"276936"
+multiplyNumeric("123456789123456789", "543215432154321")                         
+→
+"67063633056083456124288823135269"
+multiplyNumeric("209835983277209853709832", "98320987697430986743259832749832")  
+→
+"20631281130276884294142931281463429964183128095174748224"
+multiplyNumeric("98687769869438579843753987598437", "12321487908464638721638721")
+→
+"1215980163159628359527019517306359366992566019991938279077"
+multiplyNumeric("1", "42")                                                       
+→
+"42"
+multiplyNumeric("42", "0")                                                       
+→
+"0"
+multiplyNumeric("0", "719")                                                      
+→
+"0"
+multiplyNumeric("0", "0")                                                        
+→
+"0"
+
+~~
+
+public static String multiplyNumeric(String num1, String num2) {
+    int len1 = num1.length();
+    int len2 = num2.length();
+
+    // result array: max possible length = len1 + len2
+    int[] result = new int[len1 + len2];
+
+    // multiply each digit
+    for (int i = len1 - 1; i >= 0; i--) {
+        int n1 = num1.charAt(i) - '0';
+        for (int j = len2 - 1; j >= 0; j--) {
+            int n2 = num2.charAt(j) - '0';
+            int sum = n1 * n2 + result[i + j + 1]; // add existing carry
+            result[i + j + 1] = sum % 10;
+            result[i + j] += sum / 10;            // carry to next left
+        }
+    }
+
+    // convert result array to string
+    StringBuilder sb = new StringBuilder();
+    int k = 0;
+    // skip leading zeros
+    while (k < result.length && result[k] == 0) {
+        k++;
+    }
+    for (; k < result.length; k++) {
+        sb.append(result[k]);
+    }
+
+    return sb.length() == 0 ? "0" : sb.toString();
+}
+
+
+
+
+
+~~

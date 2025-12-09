@@ -1,0 +1,55 @@
+https://codestepbystep.com/r/problem/view/java/strings/repeat
+
+ repeat
+Language/Type:Javastringparametersreturn
+Related Links:String
+
+Write a method named repeat that accepts a string and a number of repetitions as parameters and returns the string concatenated that many times. For example, the call of repeat("hello", 3) returns "hellohellohello". If the number of repetitions is 0 or less, return an empty string.
+
+
+
+~~
+
+
+repeat("hello", 3)               
+→
+"hellohellohello"
+repeat("abc", 5)                 
+→
+"abcabcabcabcabc"
+repeat("?", 10)                  
+→
+"??????????"
+repeat("  a   long   string ", 2)
+→
+"  a   long   string   a   long   string "
+repeat("abcde", 1)               
+→
+"abcde"
+repeat("abcde", 0)               
+→
+""
+repeat("", 100)                  
+→
+""
+
+~~ 
+
+
+
+public static String repeat(String str, int times) {
+    if (times <= 0) {
+        return "";
+    }
+
+    String result = "";
+    for (int i = 0; i < times; i++) {
+        result += str;
+    }
+
+    return result;
+}
+
+
+
+~~

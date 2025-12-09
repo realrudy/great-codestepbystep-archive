@@ -1,0 +1,87 @@
+https://codestepbystep.com/r/problem/view/java/strings/sameDashes
+sameDashes
+Language/Type:Javastringparametersreturnboolean
+Related Links:String
+
+Write a method named sameDashes that accepts two strings as parameters and that returns a boolean value indicating whether or not they have dashes in the same places (returning true if they do and false if not). For example, below are four pairs of strings of equal length that have the same pattern of dashes. Notice that the last pair has no dashes at all.
+
+string 1:    "hi--there-you."        "-15-389"        "criminal-plan"        "abc"
+string 2:    "12--(134)-7539"        "-xy-zzy"        "(206)555-1384"        "9.8"
+So a call of sameDashes("hi--there-you.", "12--(134)-7539") should return true. By contrast, the call of sameDashes("hi--there-you", "hey-there-yo-") should return false because the first string has an unmatched dash at index 2 and the second string has an unmatched dash at index 12.
+
+To be considered a match, the strings must have exactly the same number of dashes in exactly the same positions. Note that the strings might be of different length, but different-length strings might still return true if it turns out that all of their dashes are in the range of indexes that is within the bounds of the shorter string. For example, the following calls should each return true, because the strings each have two dashes and they are in the same positions.
+
+sameDashes("1st-has-more characters", "2nd-has-less")
+sameDashes("1st-has-less", "2nd-has-more chars")
+But the following should return false because the longer string has a third dash where the shorter does not:
+
+sameDashes("1st-has-more-chars", "2nd-has-less")
+sameDashes("1st-has-less", "2nd-has-more-characters")
+Constraints: You should not use any data structures such as arrays to help you solve this problem. But you can declare as many simple variables like int, char, etc. as you like. Declaring auxiliary String variables is also fine.
+
+~~
+
+sameDashes("abc", "9.8")                                                    
+→
+true
+sameDashes("criminal-plan", "(206)555-1384")                                
+→
+true
+sameDashes("1st-has-more characters", "2nd-has-less")                       
+→
+true
+sameDashes("1st-has-less", "2nd-has-more characters")                       
+→
+true
+sameDashes("dash-at-end-", "this-is-end-too")                               
+→
+true
+sameDashes("1st-this-is-end-too", "2nd-dash-at-end-")                       
+→
+true
+sameDashes("1st-has-more-characters", "2nd-has-less")                       
+→
+false
+sameDashes("1st-has-less", "2nd-has-more-characters")                       
+→
+false
+sameDashes("same-num-different-alignment", "same-num-different..-alignment")
+→
+false
+sameDashes("012345678901-", "0--")                                          
+→
+false
+sameDashes("0--", "012345678901")                                           
+→
+false
+~~
+
+
+
+
+public boolean sameDashes(String s1, String s2) {
+    int minLength = Math.min(s1.length(), s2.length());
+
+    // Check positions within the bounds of the shorter string
+    for (int i = 0; i < minLength; i++) {
+        if ((s1.charAt(i) == '-' && s2.charAt(i) != '-') ||
+            (s1.charAt(i) != '-' && s2.charAt(i) == '-')) {
+            return false; // Mismatch found
+        }
+    }
+
+    // Check if the longer string has extra dashes beyond the shorter string
+    if (s1.length() > minLength) {
+        for (int i = minLength; i < s1.length(); i++) {
+            if (s1.charAt(i) == '-') return false;
+        }
+    } else if (s2.length() > minLength) {
+        for (int i = minLength; i < s2.length(); i++) {
+            if (s2.charAt(i) == '-') return false;
+        }
+    }
+
+    return true; // All dash positions match
+}
+
+~~

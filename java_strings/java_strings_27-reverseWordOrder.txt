@@ -1,0 +1,43 @@
+https://codestepbystep.com/r/problem/view/java/strings/reverseWordOrder
+
+reverseWordOrder
+Language/Type:Javastringreturn
+Related Links:String
+
+Write a method named reverseWordOrder that accepts a string s as its parameter and returns a new string with the words from s in reverse order. A word is a sequence of one or more non-space characters; words are separated by single spaces. For example, the call of reverseWordOrder("Hello what is your name?") should return "name? your is what Hello".
+
+This problem is fairly straightforward to solve if you use the String method split. For added challenge, can you solve it without using split?
+
+~~
+
+reverseWordOrder("Hello what is your name?")
+→
+"name? your is what Hello"
+reverseWordOrder("hello")                   
+→
+"hello"
+reverseWordOrder("how are you")             
+→
+"you are how"
+reverseWordOrder("a b c d")                 
+→
+"d c b a"
+reverseWordOrder("")                        
+→
+""
+~~
+public String reverseWordOrder(String s) {
+    String[] words = s.split(" "); // Split the string into words
+    StringBuilder reversed = new StringBuilder();
+    
+    for (int i = words.length - 1; i >= 0; i--) {
+        reversed.append(words[i]);
+        if (i != 0) {
+            reversed.append(" "); // Add space between words
+        }
+    }
+    
+    return reversed.toString();
+}
+
+~~

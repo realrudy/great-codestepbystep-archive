@@ -1,0 +1,55 @@
+https://codestepbystep.com/r/problem/view/java/strings/isAllVowels
+
+
+isAllVowels
+Language/Type:Javastring
+Related Links:String
+
+Write a method named isAllVowels that returns whether a string consists entirely of vowels (a, e, i, o, or u, case-insensitively). For example, isAllVowels("eiEIo") should return true while isAllVowels("banana") should return false.
+
+For this problem, you may assume that a working solution already exists to the previous problem, isVowel, and you may call it in your solution.
+
+
+~~
+
+isAllVowels("eiEIo")             
+→
+true
+isAllVowels("aaaaAAAA")          
+→
+true
+isAllVowels("u")                 
+→
+true
+isAllVowels("aeeeaiieoouuiieiia")
+→
+true
+isAllVowels("Borat")             
+→
+false
+isAllVowels("obama")             
+→
+false
+isAllVowels("hello")             
+→
+false
+isAllVowels("X")                 
+→
+false
+isAllVowels("banana")            
+→
+false
+isAllVowels("")                  
+→
+true
+~~
+public static boolean isAllVowels(String s) {
+    for (int i = 0; i < s.length(); i++) {
+        // pass a 1-character substring to isVowel
+        if (!isVowel(s.substring(i, i + 1))) {
+            return false;
+        }
+    }
+    return true;
+}
+~~

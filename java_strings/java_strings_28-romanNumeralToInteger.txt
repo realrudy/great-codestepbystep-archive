@@ -1,0 +1,122 @@
+https://codestepbystep.com/r/problem/view/java/strings/romanNumeralToInteger
+
+
+romanNumeralToInteger
+Language/Type:Javastringparametersreturn
+Related Links:String
+
+Write a method named romanNumeralToInteger that accepts a string representing a Roman numeral and returns the equivalent base-10 integer. For example, the call of romanNumeralToInteger("XIII") returns 13.
+
+Recall that Roman numerals use the following symbols to represent the following base-10 numbers:
+
+I: 1
+V: 5
+X: 10
+L: 50
+C: 100
+D: 500
+M: 1000
+The numbers 4 and 9 are special and are written with a "minus one" prefix on the appropriate unit. In the units digit, IV and IX represent 4 and 9 respectively. In the tens digit, XL and XC represent 40 and 90 respectively. In the hundreds digit, CD and CM represent 400 and 900 respectively.
+
+So, for example, the number 624 is represented as "DCXXIV" and the number 999 would be "CMXCIX". You may assume that the string passed will be a valid non-empty Roman numeral in uppercase using only the given characters.
+
+~~
+
+romanNumeralToInteger("I")        
+→
+1
+romanNumeralToInteger("III")      
+→
+3
+romanNumeralToInteger("IV")       
+→
+4
+romanNumeralToInteger("VI")       
+→
+6
+romanNumeralToInteger("VIII")     
+→
+8
+romanNumeralToInteger("IX")       
+→
+9
+romanNumeralToInteger("X")        
+→
+10
+romanNumeralToInteger("XIII")     
+→
+13
+romanNumeralToInteger("XIV")      
+→
+14
+romanNumeralToInteger("XVII")     
+→
+17
+romanNumeralToInteger("XIX")      
+→
+19
+romanNumeralToInteger("XX")       
+→
+20
+romanNumeralToInteger("XXXIX")    
+→
+39
+romanNumeralToInteger("XLI")      
+→
+41
+romanNumeralToInteger("LIX")      
+→
+59
+romanNumeralToInteger("DCXXIV")   
+→
+624
+romanNumeralToInteger("CMXCIX")   
+→
+999
+romanNumeralToInteger("MCXIX")    
+→
+1119
+romanNumeralToInteger("MCMXCVIII")
+→
+1998
+romanNumeralToInteger("MMMCDXIV") 
+→
+3414
+~~
+
+public int romanNumeralToInteger(String s) {
+    int total = 0;
+    int prevValue = 0;
+
+    for (int i = s.length() - 1; i >= 0; i--) {
+        char c = s.charAt(i);
+        int value = 0;
+
+        // Map Roman numeral to integer value
+        switch (c) {
+            case 'I': value = 1; break;
+            case 'V': value = 5; break;
+            case 'X': value = 10; break;
+            case 'L': value = 50; break;
+            case 'C': value = 100; break;
+            case 'D': value = 500; break;
+            case 'M': value = 1000; break;
+        }
+
+        // If the current value is less than the previous one, subtract it
+        if (value < prevValue) {
+            total -= value;
+        } else {
+            total += value;
+        }
+
+        prevValue = value;
+    }
+
+    return total;
+}
+
+
+
+
+~~

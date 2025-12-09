@@ -1,0 +1,165 @@
+https://codestepbystep.com/r/problem/view/java/basics/OldLady
+OldLady
+Language/Type:Javabasicsconsole outputescape sequencesmethods
+
+Write a complete Java program in a class named OldLady that prints the following cumulative song as console output. Use methods to capture the structure of the song and to eliminate redundancy. For example, no complete line of output should be println'd in two or more places in your code.
+
+There was an old lady who swallowed a fly.
+I don't know why she swallowed that fly,
+Perhaps she'll die.
+
+There was an old lady who swallowed a spider,
+That wriggled and iggled and jiggled inside her.
+She swallowed the spider to catch the fly,
+I don't know why she swallowed that fly,
+Perhaps she'll die.
+
+There was an old lady who swallowed a bird,
+How absurd to swallow a bird.
+She swallowed the bird to catch the spider,
+She swallowed the spider to catch the fly,
+I don't know why she swallowed that fly,
+Perhaps she'll die.
+
+There was an old lady who swallowed a cat,
+Imagine that to swallow a cat.
+She swallowed the cat to catch the bird,
+She swallowed the bird to catch the spider,
+She swallowed the spider to catch the fly,
+I don't know why she swallowed that fly,
+Perhaps she'll die.
+
+There was an old lady who swallowed a dog,
+What a hog to swallow a dog.
+She swallowed the dog to catch the cat,
+She swallowed the cat to catch the bird,
+She swallowed the bird to catch the spider,
+She swallowed the spider to catch the fly,
+I don't know why she swallowed that fly,
+Perhaps she'll die.
+
+There was an old lady who swallowed a horse,
+She died of course.
+
+~~
+test #1:
+output
+console output:
+There was an old lady who swallowed a fly.
+I don't know why she swallowed that fly,
+Perhaps she'll die.
+
+There was an old lady who swallowed a spider,
+That wriggled and iggled and jiggled inside her.
+She swallowed the spider to catch the fly,
+I don't know why she swallowed that fly,
+Perhaps she'll die.
+
+There was an old lady who swallowed a bird,
+How absurd to swallow a bird.
+She swallowed the bird to catch the spider,
+She swallowed the spider to catch the fly,
+I don't know why she swallowed that fly,
+Perhaps she'll die.
+
+There was an old lady who swallowed a cat,
+Imagine that to swallow a cat.
+She swallowed the cat to catch the bird,
+She swallowed the bird to catch the spider,
+She swallowed the spider to catch the fly,
+I don't know why she swallowed that fly,
+Perhaps she'll die.
+
+There was an old lady who swallowed a dog,
+What a hog to swallow a dog.
+She swallowed the dog to catch the cat,
+She swallowed the cat to catch the bird,
+She swallowed the bird to catch the spider,
+She swallowed the spider to catch the fly,
+I don't know why she swallowed that fly,
+Perhaps she'll die.
+
+There was an old lady who swallowed a horse,
+She died of course.
+result:
+pass
+~~
+public class OldLady {
+
+    public static void main(String[] args) {
+        singFly();
+        singSpider();
+        singBird();
+        singCat();
+        singDog();
+        singHorse();
+    }
+
+    // Method for the fly verse
+    public static void singFly() {
+        System.out.println("There was an old lady who swallowed a fly.");
+        chorus();
+        System.out.println();
+    }
+
+    // Method for the spider verse
+    public static void singSpider() {
+        System.out.println("There was an old lady who swallowed a spider,");
+        System.out.println("That wriggled and iggled and jiggled inside her.");
+        swallow("spider", "fly");
+        chorus();
+        System.out.println();
+    }
+
+    // Method for the bird verse
+    public static void singBird() {
+        System.out.println("There was an old lady who swallowed a bird,");
+        System.out.println("How absurd to swallow a bird.");
+        swallow("bird", "spider");
+        swallow("spider", "fly");
+        chorus();
+        System.out.println();
+    }
+
+    // Method for the cat verse
+    public static void singCat() {
+        System.out.println("There was an old lady who swallowed a cat,");
+        System.out.println("Imagine that to swallow a cat.");
+        swallow("cat", "bird");
+        swallow("bird", "spider");
+        swallow("spider", "fly");
+        chorus();
+        System.out.println();
+    }
+
+    // Method for the dog verse
+    public static void singDog() {
+        System.out.println("There was an old lady who swallowed a dog,");
+        System.out.println("What a hog to swallow a dog.");
+        swallow("dog", "cat");
+        swallow("cat", "bird");
+        swallow("bird", "spider");
+        swallow("spider", "fly");
+        chorus();
+        System.out.println();
+    }
+
+    // Method for the horse verse
+    public static void singHorse() {
+        System.out.println("There was an old lady who swallowed a horse,");
+        System.out.println("She died of course.");
+    }
+
+    // Chorus method (common lines)
+    public static void chorus() {
+        System.out.println("I don't know why she swallowed that fly,");
+        System.out.println("Perhaps she'll die.");
+    }
+
+    // Swallowing sequence method
+    public static void swallow(String predator, String prey) {
+        System.out.println("She swallowed the " + predator + " to catch the " + prey + ",");
+    }
+}
+
+~~

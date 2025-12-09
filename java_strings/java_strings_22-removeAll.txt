@@ -1,0 +1,48 @@
+https://codestepbystep.com/r/problem/view/java/strings/removeAll
+ removeAll
+Language/Type:Javastringreturn
+Related Links:String
+
+Write a method named removeAll that accepts a string and a character as parameters, and removes all occurrences of the character. For example, the call of removeAll("Summer is here!", 'e') should return "Summr is hr!". Do not use the string replace method in your solution.
+
+~~
+
+removeAll("Summer is here!", 'e')
+→
+"Summr is hr!"
+removeAll("this is a test", 't') 
+→
+"his is a es"
+removeAll("---0---", '-')        
+→
+"0"
+removeAll("banana", 't')         
+→
+"banana"
+removeAll("xxxxx", 'x')          
+→
+""
+removeAll("", ' ')               
+→
+""
+~~
+
+
+
+public static String removeAll(String str, char ch) {
+    String result = "";
+
+    // Loop through each character in the string
+    for (int i = 0; i < str.length(); i++) {
+        char current = str.charAt(i);
+        // Append the character only if it's not equal to ch
+        if (current != ch) {
+            result += current;
+        }
+    }
+
+    return result;
+}
+
+
+~~

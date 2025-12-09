@@ -1,0 +1,105 @@
+https://codestepbystep.com/r/problem/view/java/strings/toRomanNumeral
+
+ toRomanNumeral
+Language/Type:Javastringparametersreturn
+Related Links:String
+
+Write a method named toRomanNumeral that accepts an integer and returns an uppercase string representing that number in Roman numerals. For example, the call of toRomanNumeral(13) returns "XIII".
+
+Recall that Roman numerals use the following symbols to represent the following base-10 numbers:
+
+I: 1
+V: 5
+X: 10
+L: 50
+C: 100
+D: 500
+M: 1000
+The numbers 4 and 9 are special and are written with a "minus one" prefix on the appropriate unit. In the units digit, IV and IX represent 4 and 9 respectively. In the tens digit, XL and XC represent 40 and 90 respectively. In the hundreds digit, CD and CM represent 400 and 900 respectively.
+
+So, for example, the number 624 is represented as "DCXXIV" and the number 999 would be "CMXCIX". You may assume that the integer passed will be between 1 and 3999 inclusive.
+
+~~
+
+toRomanNumeral(1)   
+→
+"I"
+toRomanNumeral(3)   
+→
+"III"
+toRomanNumeral(4)   
+→
+"IV"
+toRomanNumeral(6)   
+→
+"VI"
+toRomanNumeral(8)   
+→
+"VIII"
+toRomanNumeral(9)   
+→
+"IX"
+toRomanNumeral(10)  
+→
+"X"
+toRomanNumeral(13)  
+→
+"XIII"
+toRomanNumeral(14)  
+→
+"XIV"
+toRomanNumeral(17)  
+→
+"XVII"
+toRomanNumeral(19)  
+→
+"XIX"
+toRomanNumeral(20)  
+→
+"XX"
+toRomanNumeral(39)  
+→
+"XXXIX"
+toRomanNumeral(41)  
+→
+"XLI"
+toRomanNumeral(59)  
+→
+"LIX"
+toRomanNumeral(624) 
+→
+"DCXXIV"
+toRomanNumeral(999) 
+→
+"CMXCIX"
+toRomanNumeral(1119)
+→
+"MCXIX"
+toRomanNumeral(1998)
+→
+"MCMXCVIII"
+toRomanNumeral(3414)
+→
+"MMMCDXIV"
+~~
+public String toRomanNumeral(int num) {
+    // Arrays of Roman symbols and their corresponding values
+    int[] values =    {1000, 900, 500, 400, 100, 90,  50,  40,  10,  9,   5,   4,   1};
+    String[] symbols = {"M","CM","D","CD","C","XC","L","XL","X","IX","V","IV","I"};
+
+    StringBuilder sb = new StringBuilder();
+
+    for (int i = 0; i < values.length; i++) {
+        while (num >= values[i]) {
+            num -= values[i];
+            sb.append(symbols[i]);
+        }
+    }
+
+    return sb.toString();
+}
+
+
+
+
+~~

@@ -1,0 +1,190 @@
+https://codestepbystep.com/r/problem/view/java/basics/BoughtMeACat
+ BoughtMeACat
+Language/Type:Javabasicsconsole outputescape sequencesmethods
+
+Write a complete Java program in a class named BoughtMeACat that prints the following cumulative song as console output. Use methods to capture the structure of the song and to eliminate redundancy. For example, no complete line of output should be println'd in two or more places in your code.
+
+Bought me a cat and the cat pleased me,
+I fed my cat under yonder tree.
+Cat goes fiddle-i-fee.
+
+Bought me a hen and the hen pleased me,
+I fed my hen under yonder tree.
+Hen goes chimmy-chuck, chimmy-chuck,
+Cat goes fiddle-i-fee.
+
+Bought me a duck and the duck pleased me,
+I fed my duck under yonder tree.
+Duck goes quack, quack,
+Hen goes chimmy-chuck, chimmy-chuck,
+Cat goes fiddle-i-fee.
+
+Bought me a goose and the goose pleased me,
+I fed my goose under yonder tree.
+Goose goes hissy, hissy,
+Duck goes quack, quack,
+Hen goes chimmy-chuck, chimmy-chuck,
+Cat goes fiddle-i-fee.
+
+Bought me a sheep and the sheep pleased me,
+I fed my sheep under yonder tree.
+Sheep goes baa, baa,
+Goose goes hissy, hissy,
+Duck goes quack, quack,
+Hen goes chimmy-chuck, chimmy-chuck,
+Cat goes fiddle-i-fee.
+
+Bought me a pig and the pig pleased me,
+I fed my pig under yonder tree.
+Pig goes oink, oink,
+Sheep goes baa, baa,
+Goose goes hissy, hissy,
+Duck goes quack, quack,
+Hen goes chimmy-chuck, chimmy-chuck,
+Cat goes fiddle-i-fee.
+
+~~
+test #1:
+output
+console output:
+Bought me a cat and the cat pleased me,
+I fed my cat under yonder tree.
+Cat goes fiddle-i-fee.
+
+Bought me a hen and the hen pleased me,
+I fed my hen under yonder tree.
+Hen goes chimmy-chuck, chimmy-chuck,
+Cat goes fiddle-i-fee.
+
+Bought me a duck and the duck pleased me,
+I fed my duck under yonder tree.
+Duck goes quack, quack,
+Hen goes chimmy-chuck, chimmy-chuck,
+Cat goes fiddle-i-fee.
+
+Bought me a goose and the goose pleased me,
+I fed my goose under yonder tree.
+Goose goes hissy, hissy,
+Duck goes quack, quack,
+Hen goes chimmy-chuck, chimmy-chuck,
+Cat goes fiddle-i-fee.
+
+Bought me a sheep and the sheep pleased me,
+I fed my sheep under yonder tree.
+Sheep goes baa, baa,
+Goose goes hissy, hissy,
+Duck goes quack, quack,
+Hen goes chimmy-chuck, chimmy-chuck,
+Cat goes fiddle-i-fee.
+
+Bought me a pig and the pig pleased me,
+I fed my pig under yonder tree.
+Pig goes oink, oink,
+Sheep goes baa, baa,
+Goose goes hissy, hissy,
+Duck goes quack, quack,
+Hen goes chimmy-chuck, chimmy-chuck,
+Cat goes fiddle-i-fee.
+
+result:
+pass
+~~
+
+
+public class BoughtMeACat {
+
+    public static void main(String[] args) {
+        singCat();
+        singHen();
+        singDuck();
+        singGoose();
+        singSheep();
+        singPig();
+    }
+
+    public static void singCat() {
+        bought("cat");
+        catSound();
+        System.out.println();
+    }
+
+    public static void singHen() {
+        bought("hen");
+        henSound();
+        catSound();
+        System.out.println();
+    }
+
+    public static void singDuck() {
+        bought("duck");
+        duckSound();
+        henSound();
+        catSound();
+        System.out.println();
+    }
+
+    public static void singGoose() {
+        bought("goose");
+        gooseSound();
+        duckSound();
+        henSound();
+        catSound();
+        System.out.println();
+    }
+
+    public static void singSheep() {
+        bought("sheep");
+        sheepSound();
+        gooseSound();
+        duckSound();
+        henSound();
+        catSound();
+        System.out.println();
+    }
+
+    public static void singPig() {
+        bought("pig");
+        pigSound();
+        sheepSound();
+        gooseSound();
+        duckSound();
+        henSound();
+        catSound();
+        System.out.println();
+    }
+
+    // Generic method for the first two lines of each verse
+    public static void bought(String animal) {
+        System.out.println("Bought me a " + animal + " and the " + animal + " pleased me,");
+        System.out.println("I fed my " + animal + " under yonder tree.");
+    }
+
+    // Sound methods for each animal
+    public static void catSound() {
+        System.out.println("Cat goes fiddle-i-fee.");
+    }
+
+    public static void henSound() {
+        System.out.println("Hen goes chimmy-chuck, chimmy-chuck,");
+    }
+
+    public static void duckSound() {
+        System.out.println("Duck goes quack, quack,");
+    }
+
+    public static void gooseSound() {
+        System.out.println("Goose goes hissy, hissy,");
+    }
+
+    public static void sheepSound() {
+        System.out.println("Sheep goes baa, baa,");
+    }
+
+    public static void pigSound() {
+        System.out.println("Pig goes oink, oink,");
+    }
+}
+
+
+
+~~

@@ -1,0 +1,35 @@
+https://codestepbystep.com/r/problem/view/java/strings/reverse
+ reverse
+Language/Type:Javastring
+Related Links:String
+Author:Melissa Hovik on 2017/04/21
+
+Write a method named reverse that accepts a string parameter returns a new string with the characters in the opposite order. For example, A call of reverse("Pikachu") would return "uchakiP".
+~~
+
+reverse("Pikachu")     
+→
+"uhcakiP"
+reverse("banana split")
+→
+"tilps ananab"
+reverse("rAcEcAr")     
+→
+"rAcEcAr"
+reverse("X")           
+→
+"X"
+~~
+
+
+
+public static String reverse(String str) {
+    String result = "";
+    for (int i = str.length() - 1; i >= 0; i--) {
+        result += str.charAt(i);
+    }
+    return result;
+}
+
+
+~~

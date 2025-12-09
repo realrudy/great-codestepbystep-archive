@@ -1,0 +1,40 @@
+https://codestepbystep.com/r/problem/view/java/strings/stutter
+
+stutter
+Language/Type:Javastring
+Related Links:String
+Author:Melissa Hovik on 2017/04/21
+
+Write a method named stutter that accepts a string parameter returns a new string replacing each of its characters with two consecutive copies of that character. For example, a call of stutter("hello") would return "hheelllloo".
+
+~~
+
+stutter("hello")            
+→
+"hheelllloo"
+stutter("Pikachu")          
+→
+"PPiikkaacchhuu"
+stutter("It's a-me, Mario!")
+→
+"IItt''ss  aa--mmee,,  MMaarriioo!!"
+stutter("X")                
+→
+"XX"
+~~
+public String stutter(String s) {
+    StringBuilder result = new StringBuilder();
+
+    for (int i = 0; i < s.length(); i++) {
+        char c = s.charAt(i);
+        result.append(c).append(c); // append the character twice
+    }
+
+    return result.toString();
+}
+
+
+
+
+
+~~
