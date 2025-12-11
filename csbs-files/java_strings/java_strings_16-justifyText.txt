@@ -1,0 +1,118 @@
+https://www.codestepbystep.com/r/problem/view/java/strings/justifyText
+
+justifyText
+Language/Type:Javastringparameters
+Related Links:String
+
+Write a method named justifyText that accepts a string and a line width as an integer, and outputs to the console a multi-line string where each line is justified to the given width. A justified line contains as many words as will fit into the given width, with any whitespace distributed equally between the words. For example, ... ... The last line should be left-aligned and should not be justified.
+
+~~
+test #1:
+justifyText("This is an example of text justification", 16);
+console output:
+This    is    an
+example  of text
+justification
+result:
+pass
+test #2:
+justifyText("Four score and seven years ago our fathers brought forth on this continent a ...
+console output:
+Four score and seven years ago
+our  fathers brought  forth on
+this  continent  a  new nation
+conceived   in   Liberty   and
+dedicated  to  the proposition
+that   all  men   are  created
+equal.
+result:
+pass
+test #3:
+justifyText("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo...
+console output:
+Lorem   ipsum  dolor  sit  amet,  consectetur
+adipiscing   elit,  sed   do  eiusmod  tempor
+incididunt  ut labore et dolore magna aliqua.
+Ut   enim  ad  minim   veniam,  quis  nostrud
+exercitation  ullamco laboris nisi ut aliquip
+ex  ea  commodo  consequat.  Duis  aute irure
+dolor  in  reprehenderit  in  voluptate velit
+esse  cillum dolore eu fugiat nulla pariatur.
+Excepteur   sint   occaecat   cupidatat   non
+proident,  sunt in culpa qui officia deserunt
+mollit anim id est laborum.
+result:
+pass
+~~
+import java.util.*;
+
+public static void justifyText(String text, int width) {
+    String[] words = text.trim().split("\\s+");
+    
+    // Handle edge case where text is empty or just whitespace
+    if (words.length == 0 || (words.length == 1 && words[0].isEmpty())) {
+        return;
+    }
+
+    ArrayList<String> currentLine = new ArrayList<>();
+    int currentLineLength = 0;
+
+    for (String word : words) {
+        // existing chars + new word + 1 space per gap
+        int minSpaces = currentLine.isEmpty() ? 0 : currentLine.size();
+        
+        if (currentLineLength + word.length() + minSpaces > width) {
+            printJustified(currentLine, currentLineLength, width);
+            currentLine.clear();
+            currentLineLength = 0;
+        }
+        
+        currentLine.add(word);
+        currentLineLength += word.length();
+    }
+
+    // Print last line (Left aligned, simply separated by single spaces)
+    if (!currentLine.isEmpty()) {
+        System.out.print(currentLine.get(0));
+        for (int i = 1; i < currentLine.size(); i++) {
+            System.out.print(" " + currentLine.get(i));
+        }
+        System.out.println();
+    }
+}
+
+private static void printJustified(ArrayList<String> line, int charCount, int width) {
+    if (line.size() == 1) {
+        System.out.println(line.get(0));
+        return;
+    }
+
+    int totalSpacesNeeded = width - charCount;
+    int gaps = line.size() - 1;
+    int spacesPerGap = totalSpacesNeeded / gaps;
+    int remainder = totalSpacesNeeded % gaps;
+
+    // Create an array to determine exactly how many spaces go in each gap
+    int[] gapWidths = new int[gaps];
+    Arrays.fill(gapWidths, spacesPerGap);
+
+    // Distribute the remainder spaces evenly across the gaps
+    // using integer scaling to pick indices (0, 2, etc.) instead of just (0, 1...)
+    for (int i = 0; i < remainder; i++) {
+        int index = (i * gaps) / remainder;
+        gapWidths[index]++;
+    }
+
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < line.size(); i++) {
+        sb.append(line.get(i));
+        // Append spaces if this is not the last word
+        if (i < gaps) {
+            for (int s = 0; s < gapWidths[i]; s++) {
+                sb.append(" ");
+            }
+        }
+    }
+    System.out.println(sb.toString());
+}
+~~
